@@ -1,4 +1,4 @@
-# Gamemaker 开发者之家
+<center>![](logo.png)</center>
 
 ## 论坛地址
 
