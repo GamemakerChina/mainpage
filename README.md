@@ -20,6 +20,8 @@ https://github.com/orgs/GamemakerChina/people/(你的用户名)
 
 展示设置位于左侧 Membership 中，你可以选择 Public 或 Private（Private 代表仅组织内成员可见）。
 
+## 注意事项
+
 本组织可以存放开源插件项目，开源游戏项目，Demo 和开源的周边工具。
 
 本组织只能用于存放源代码，其他文件如音频，视频就不要放上来了。
