@@ -1,4 +1,4 @@
-<center>![](logo.png)</center>
+<center>![](./logo.png)</center>
 
 ## 论坛地址
 
