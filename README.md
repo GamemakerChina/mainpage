@@ -1,4 +1,4 @@
-# Gamemaker 中国开发者之家
+# Gamemaker 开发者之家
 
 ## 论坛地址
 
