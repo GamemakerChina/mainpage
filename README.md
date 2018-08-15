@@ -46,4 +46,6 @@
 
 如 GameMaker 8，GameMaker: Studio，GameMaker Studio 2，允许使用缩写。
 
+同时对开源许可证没有特殊限制，你只需要按照需要选择适合的开源许可证即可。
+
 如果项目为 Demo 请加前缀 `demo-`
