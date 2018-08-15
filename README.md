@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/GamemakerChina/gamemakerchina.github.io/master/logo.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/GamemakerChina/gamemakerchina.github.io/master/logo-green.png" /></p>
 
 ## 论坛地址
 
