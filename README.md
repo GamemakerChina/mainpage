@@ -1,4 +1,4 @@
-<center>![](https://raw.githubusercontent.com/GamemakerChina/gamemakerchina.github.io/master/logo.png)</center>
+<center> ![](https://raw.githubusercontent.com/GamemakerChina/gamemakerchina.github.io/master/logo.png) </center>
 
 ## 论坛地址
 
