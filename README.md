@@ -56,4 +56,4 @@ https://github.com/orgs/GamemakerChina/people/(你的用户名)
 
 同时对开源许可证没有特殊限制，你只需要按照需要选择适合的开源许可证即可。
 
-如果项目为 Demo 请加前缀 `demo-`
+如果项目为 Demo 源码请加前缀 `demo-`
