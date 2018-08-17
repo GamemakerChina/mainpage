@@ -1,8 +1,10 @@
 <p align="center"><img src="https://raw.githubusercontent.com/GamemakerChina/gamemakerchina.github.io/master/logo-green.png" /></p>
 
-## 论坛地址
+## 相关地址
 
-[http://www.52gmk.com](http://www.52gmk.com)
+论坛地址：[http://www.52gmk.com](http://www.52gmk.com)
+
+GitHub 主页：[https://github.com/GamemakerChina](https://github.com/GamemakerChina)
 
 ## QQ群
 
