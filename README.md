@@ -4,6 +4,8 @@
 
 论坛地址：[http://www.52gmk.com](http://www.52gmk.com)
 
+gamemaker 吧：[https://tieba.baidu.com/f?kw=gamemaker](https://tieba.baidu.com/f?kw=gamemaker)
+
 GitHub 主页：[https://github.com/GamemakerChina](https://github.com/GamemakerChina)
 
 ## QQ群
