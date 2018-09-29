@@ -6,7 +6,17 @@
 
 gamemaker 吧：[https://tieba.baidu.com/f?kw=gamemaker](https://tieba.baidu.com/f?kw=gamemaker)
 
+gmstudio 吧：[https://tieba.baidu.com/f?kw=gmstudio](https://tieba.baidu.com/f?kw=gmstudio)
+
+indienova 小组：[https://www.indienova.com/groups/127](https://www.indienova.com/groups/127)
+
 GitHub 主页：[https://github.com/GamemakerChina](https://github.com/GamemakerChina)
+
+GM: S IDE 汉化：[https://github.com/GamemakerChina/gms9999_zhcn](https://github.com/GamemakerChina/gms9999_zhcn)
+
+GMS 2 IDE 汉化：[https://github.com/GamemakerChina/gms2translation](https://github.com/GamemakerChina/gms2translation)
+
+GMS 2 文档汉化：[https://github.com/GamemakerChina/GMS2_help](https://github.com/GamemakerChina/GMS2_help)
 
 ## QQ群
 
