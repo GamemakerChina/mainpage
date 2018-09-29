@@ -18,6 +18,8 @@ GMS 2 IDE 汉化：[https://github.com/GamemakerChina/gms2translation](https://g
 
 GMS 2 文档汉化：[https://github.com/GamemakerChina/GMS2_help](https://github.com/GamemakerChina/GMS2_help)
 
+GMS 2 Runtime 镜像：[https://gms.magecorn.com](https://gms.magecorn.com)
+
 ## QQ群
 
 2群号码(推荐)：548188547
