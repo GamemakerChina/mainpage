@@ -27,4 +27,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: build
-          FOLDER: docs/.vuepress/dist
+          FOLDER: .vuepress/dist
