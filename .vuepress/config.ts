@@ -4,12 +4,12 @@ import recoTheme from 'vuepress-theme-reco'
 
 export default defineUserConfig({
   title: 'GameMaker China Forum',
-  description: 'Just playing around',
+  description: 'GameMaker China Forum\'s mainpage and documents',
   theme: recoTheme({
     style: '@vuepress-reco/style-default',
-    logo: '/logo.png',
-    author: 'GameMaker China Forum',
-    authorAvatar: '/logo.png',
+    logo: '/images/logo.png',
+    author: 'GameMaker 开发者之家',
+    authorAvatar: '/images/logo.png',
     docsRepo: 'https://github.com/GamemakerChina/mainpage',
     docsBranch: 'main',
     docsDir: '',
