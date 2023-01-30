@@ -1,0 +1,30 @@
+name: Build and deploy mainpage
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Prepareing environments
+        run: |
+          npm install -g pnpm
+          pnpm install
+          
+      - name: Build mainpage
+        run: pnpm run build
+
+      - name: Deploy to build branch
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: build
+          FOLDER: docs/.vuepress/dist
