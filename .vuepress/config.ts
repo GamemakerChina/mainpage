@@ -33,12 +33,11 @@ export default defineUserConfig({
     navbar:
     [
       { text: '主页', link: '/' },
-      { text: '文档',
-        children: [
-          { text: 'vuepress-reco', link: '/docs/theme-reco/theme' },
-          { text: 'vuepress-theme-reco', link: '/blogs/other/guide' }
-        ]
-      },
+      // { text: '文档',
+      //   children: [
+      //     { text: 'vuepress-reco', link: '/docs/theme-reco/theme' }
+      //   ]
+      // },
     ],
     bulletin: {
       // body: [
