@@ -1,1 +1,0 @@
-import{_ as e,p as t,q as o,s as c}from"./framework-25b03c29.js";const n={},s=c("p",null,"初始页面",-1),_=[s];function r(a,i){return t(),o("div",null,_)}const m=e(n,[["render",r],["__file","contribute-with-omegat.html.vue"]]);export{m as default};

@@ -1,1 +1,0 @@
-import{_ as e,p as t,q as a,s as o}from"./framework-25b03c29.js";const n={},s=o("p",null,"first page in category1",-1),c=[s];function r(_,l){return t(),a("div",null,c)}const i=e(n,[["render",r],["__file","CatagoryAndTag.html.vue"]]);export{i as default};
