@@ -109,9 +109,9 @@ if snap_y != 0 y = snap_y;
 
 ![new collision example.png](new-collision-example.png)
 
-如你所见，播放器与墙壁完全平齐。没有缝隙，没有重叠，而且我们的 x 坐标和 y 坐标都是整数。*这是* 完美的像素。
+如你所见，玩家与墙壁完全平齐。没有缝隙，没有重叠，而且我们的 x 坐标和 y 坐标都是整数。*这是* 完美的像素。
 
-真的就是这样。你可以将这段代码插入播放器的 “步骤 ”事件中，或者将其全部放入脚本中，然后在脚本中调用。
+真的就是这样。你可以将这段代码插入玩家的 “步骤 ”事件中，或者将其全部放入脚本中，然后在脚本中调用。
 
 希望本教程对你有所帮助。![:)](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
 

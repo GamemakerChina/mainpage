@@ -3,7 +3,6 @@ title: 如何优化你的GameMaker游戏
 date: 2024/01/24
 categories:
  - 官方教程
- - 游戏优化
 ---
 
 ![How To Optimise Your Games](large-HT-OYG-hero-1.jpg)
