@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./app-gIP5chhN.js";const c={};function o(n,r){return t(),a("div")}const s=e(c,[["render",o],["__file","1.html.vue"]]),i=JSON.parse('{"path":"/categories/chajianjiaocheng/1.html","title":"","lang":"en-US","frontmatter":{"layout":"Categories"},"headers":[],"git":{},"filePathRelative":null}');export{s as comp,i as data};
