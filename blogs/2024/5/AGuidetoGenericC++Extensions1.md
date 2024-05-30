@@ -400,17 +400,17 @@ GMS2EXPORT double ext_test_Buffer(char* _GMSBuffPtrStr) {
 }
 ```
 
+## 多平台编译
 
-***-------------------从此处开始，搜索你想为之创建扩展的特定平台-------------------\*
+### 编译为Windows
 
+编译为Windows非常简单……因为我们就在Windows上……我们不需要做任何特殊的事情。
 
-Compiling for Windows**
-Compiling for Windows is very straight forward... we are on Windows... we don't have to do any special stuff.
-On Windows, your C++ code should be compiled to .DLL (Dynamic Link Library).
-This is what GMS needs to work with a C++ extension on Windows.
-GMS (its latest version) only support x64 Windows executables, so it only makes sense to create a .DLL that is compatible for x64. To do so, head over to VS and open up the "CMakePresets.json". In there you will have to add a new entry to the "configurePresets". The following code shows an example of how it should look like (assuming that you have no other presets):
+在Windows上，你的C++代码应该被编译为.DLL（动态链接库）。
 
-JSON:
+这是GMS需要在Windows上使用C++扩展的必要条件。
+
+GMS（最新版本）仅支持x64 Windows可执行文件，因此创建与x64兼容的.DLL是有意义的。为此，请转到VS并打开"CMakePresets.json"。在那里，你需要向"configurePresets"添加一个新条目。以下代码展示了一个示例，说明了应该是什么样子（假设你没有其他预设项）：
 
 ```json
 {
@@ -441,29 +441,35 @@ JSON:
 }
 ```
 
-If you now click on save, you should see in the upper part of VS that from the two dropdowns you can select "Local Machine" and "x64 Release". Once you have selected those 2 options in the dropdown, go to Build > Build All. This will start to compile your C++ code. If everything went OK (you don't have erros in your code, your tools are OK, etc...) you should see a message like: "Build All succeeded."
+如果现在点击保存，你应该能在VS的顶部看到两个下拉菜单，你可以从中选择"Local Machine"和"x64 Release"。一旦你在下拉菜单中选择了这两个选项，转到"Build > Build All"。这将开始编译你的C++代码。如果一切顺利（你的代码没有错误，你的工具也没问题等等），你应该会看到一个消息，类似于："Build All succeeded." 
 
-If this was the message that you recevied, you will have available in your VS project directory, in the "out\build\x64-release\{YOURPROJECTNAME}" (for this example the path is C:\Users\aleja\Desktop\TEST\out\build\x64-release\TEST) you will find a group of files, where amongst them, you will find a .DLL file.
-That .DLL is the library ready to be provided to GMS. Head over to GMS, add in the extension the .DLL in the proxy files ([here ](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)you will find how to do that), mark the checkbox in the extension the "Windows" platform so that it is included, and execute your game.
-If everything was done OK, you should now be able to call the three functions with no issues from your Windows GMS executable ![:)](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-Congratulations, your extension should now be working for Windows ![:bunny:](http://i.imgur.com/vlCK4R9.gif)
+如果这是你收到的消息，你将在VS项目目录中的"out\build\x64-release\{YOURPROJECTNAME}"（以本示例为例，路径为C:\Users\aleja\Desktop\TEST\out\build\x64-release\TEST）中找到一组文件，其中包括一个.DLL文件。
 
+那个.DLL文件就是准备提供给GMS的库。前往GMS，在扩展中添加.DLL到代理文件中（[在这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你可以找到如何操作），在扩展的"Windows"平台中标记复选框以包含它，然后运行你的游戏。
 
+如果一切顺利，你现在应该能够从你的Windows GMS可执行文件中无问题地调用这三个函数。
 
-**Compiling for Ubuntu (Linux)**
-To compile for Ubuntu you will need to have a physical computer with Ubuntu or a Virtual Machine (I use VirtualBox).
-You will then have to configure your machine following the steps described in[ this GMS article](https://help.yoyogames.com/hc/en-us/articles/235186168-Setting-Up-For-Ubuntu).
-Adittionally, after finshing all the setup from that article you will have to add 2 additional libraries as described in [this GMS article](https://help.yoyogames.com/hc/en-us/articles/360024186531).
-We are doing all this because this will allow you to test your extension once its created.
-Finally, you will have to install in your Ubuntu machine "CMake" and "Ninja" (in the default paths). There are lots of articles on-line if you Google on how to install this.
+恭喜，你的扩展现在应该在Windows上正常工作！
 
-Additionally, on VS hou will have to setup the connection with the Ubuntu machine (or virtual machine). In the upper part of VS, if you select from the two dropdowns the one that is most to the left (normally it should have the value of "Local machine") you will see an option in the dropdown that says "Manage connections". Click on "Add" and then add all the information to connect to your Ubuntu machine (or virtual machine). Now, if the connection was successful, in the dropdown you should see the IP that you configured as an available option to be selected.
+### 编译为Ubuntu（Linux）
 
-On Ubuntu, your C++ code should be compiled to .SO (Shared Objects).
-This is what GMS needs to work with a C++ extension on Ubuntu.
-GMS (its latest version) only support x64 executables, so it only makes sense to create a .SO that is compatible for x64. To do so, head over to VS and open up the "CMakePresets.json". In there you will have to add a new entry to the "configurePresets". The following code shows an example of how it should look like (assuming that you have no other presets):
+要编译为Ubuntu，你需要一台装有Ubuntu的物理计算机或虚拟机（我使用VirtualBox）。
 
-JSON:
+然后，你需要按照[这篇GMS文章](https://help.yoyogames.com/hc/en-us/articles/235186168-Setting-Up-For-Ubuntu)中描述的步骤配置你的机器。
+
+另外，在完成该文章中的所有设置后，你还需要按照[这篇GMS文章](https://help.yoyogames.com/hc/en-us/articles/360024186531)中描述的方式添加2个额外的库。
+
+我们这样做是因为这样可以让你在创建扩展后测试它。
+
+最后，你需要在Ubuntu机器上安装"CMake"和"Ninja"（在默认路径）。如果你在Google上搜索如何安装这些东西，会有很多在线文章供你参考。
+
+另外，在VS上，你需要设置与Ubuntu机器（或虚拟机）的连接。在VS的顶部，如果你从两个下拉菜单中选择最左边的一个（通常应该是"Local machine"），你会看到下拉菜单中有一个选项，上面写着"Manage connections"。点击"Add"，然后添加连接到你的Ubuntu机器（或虚拟机）的所有信息。现在，如果连接成功，在下拉菜单中你应该看到你配置的IP作为可选项。
+
+在Ubuntu上，你的C++代码应该被编译为.SO（共享对象）。
+
+这是GMS在Ubuntu上使用C++扩展所需的内容。
+
+GMS（其最新版本）只支持x64可执行文件，因此只有创建与x64兼容的.SO才有意义。为此，请转到VS并打开"CMakePresets.json"。在那里，你需要向"configurePresets"添加一个新条目。以下代码展示了一个示例，说明了应该是什么样子（假设你没有其他预设项）：
 
 ```json
 {
@@ -486,29 +492,24 @@ JSON:
 }
 ```
 
-If you now click on save, you should see in the upper part of VS that from the two dropdowns you can select "YOUR UBUNTU MACHINE OR VIRTUAL MAHCINE IP" and "Linux Release". Once you have selected those 2 options in the dropdown, go to Build > Build All. This will start to compile your C++ code. If everything went OK (you don't have erros in your code, your tools are OK, etc...) you should see a message like: "Build All succeeded."
+如果你现在点击保存，你应该会在VS的上部看到两个下拉菜单，可以选择“YOUR UBUNTU MACHINE OR VIRTUAL MAHCINE IP”和“Linux Release”。一旦你在下拉菜单中选择了这两个选项，就去到“Build” > “Build All”。这将开始编译你的C++代码。如果一切顺利（你的代码没有错误，你的工具没有问题等等），你应该会看到一条消息，类似于：“Build All succeeded.”
 
-If this was the message that you recevied, you will have available in your remote machine, in the "/home/{YOURUSERNAME}/.vs/{YOURPROJECTNAME}/out/build/linux-release/{YOURPROJECTNAME}" (for this example the path is /home/alex/.vs/TEST/out/build/linux-release/TEST) you will find a group of files, where amongst them, you will find a .SO file that you will have to send back to your Windows machine.
+如果你收到了这条消息，你将在远程机器的“/home/{YOURUSERNAME}/.vs/{YOURPROJECTNAME}/out/build/linux-release/{YOURPROJECTNAME}”路径（例如，对于这个示例，路径是/home/alex/.vs/TEST/out/build/linux-release/TEST）找到一组文件，在其中你会找到一个 .SO 文件，你需要将其发送回你的Windows机器。
 
-That .SO is the library ready to be provided to GMS. Head over to GMS, add in the extension the .SO in the proxy files ([here ](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)you will find how to do that), mark the checkbox in the extension the "Ubuntu" platform so that it is included, and execute your game.
-If everything was done OK, you should now be able to call the three functions with no issues from your Ubuntu GMS executable ![:)](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-Congratulations, your extension should now be working for Ubuntu ![:bunny:](http://i.imgur.com/vlCK4R9.gif)
+那个 .SO 文件是已经准备好提供给GMS的库。前往GMS，在扩展中添加 .SO 到代理文件中（[在这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你会找到如何操作的说明），在扩展中勾选“Ubuntu”平台的复选框以便包含它，并执行你的游戏。
+如果一切都顺利，你现在应该能够在Ubuntu的GMS可执行文件中无问题地调用这三个函数。
+恭喜，你的扩展现在应该能在Ubuntu上正常工作了！
 
+### 编译为Android平台
+要编译为Android平台，首先你需要按照[这篇GMS文章](https://help.yoyogames.com/hc/en-us/articles/115001368727-Setting-Up-For-Android)的说明来设置GMS以用于Android。这对我们很有用，因为我们需要NDK，而NDK包含在Android Studio中。另外，在发布之前，最好先使用Android模拟器来测试你的Android扩展。
 
+一旦你设置好了Android Studio，接下来需要做一些更改。Android是一个“特殊”的平台，因为它不能直接与你的C++代码通信。相反，你需要使用一种称为JNI（Java Native Interface）的东西，它将充当Java和C++之间的桥梁，这将需要你做一些额外的工作。
 
-**Compiling for Android**
-To compile for Android you will first have to follow [this GMS article](https://help.yoyogames.com/hc/en-us/articles/115001368727-Setting-Up-For-Android) that explains you how to setup GMS for Android. This will be usefull for us since we need the NDK which is included in Android Studio. Also, it will be useful to have the Android emulators to test your Android extension before distributing it.
-Once you have Android Studio setup. there are some changes that must be done. Android is a "special" platform, since it won't be able to directly communicate with your C++ code. Instead, you will need to use something called JNI (Java Native Interface) that will act as a bridge between Java and C++, and it will require a little bit more of work by your side.
-On Android, you need to create from VS a .SO (Shared Object) library that works for x86_64, arm64-v8a and armeabi-v7a architectures, since these are all the architectures that GMS support for Android.
+在Android上，你需要从VS创建一个适用于x86_64、arm64-v8a和armeabi-v7a架构的.SO（共享对象）库，因为这些都是GMS支持的Android平台的架构。
 
+#### 在VS中需要进行的更改
 
-
-Changes to be done in VS
-
-
-Go to VS and open up the "CMakePresets.json". In there you will have to add a new entry to the "configurePresets". The following code shows an example of how it should look like (assuming that you have no other presets):
-
-JSON:
+打开VS并打开“CMakePresets.json”文件。在这里，你需要向“configurePresets”中添加一个新条目。以下代码显示了一个示例，说明了它应该是什么样子（假设你没有其他预设项）：
 
 ```json
 {
@@ -562,14 +563,11 @@ JSON:
 }
 ```
 
-**NOTE:** There are two lines in the previous code which you will have to adapt to your case so pay special attention to them. One of them is "toolchainFile", where you will have to specifiy the path to the NDK android.toolchain.cmake (this should be installed with Android Studio if you followed the GMS guide). Also, "ANDROID_PLATFORM" is of your interest, since it indicates the minimun supported API level for your extension. As of NDK 25.2.9519653 the minimun allowed API version is 19, and trying to build for something lower than that will result in failure when compiling the needed libraries.
+**注意：** 在前面的代码中有两行你需要根据你的情况进行调整，所以特别注意它们。其中一行是 "toolchainFile"，你需要指定到NDK android.toolchain.cmake的路径（如果你按照GMS指南进行操作，这应该已经随Android Studio安装了）。另外，"ANDROID_PLATFORM"也很重要，因为它指示了你的扩展所支持的最低API级别。截至NDK 25.2.9519653，允许的最低API版本是19，尝试为低于该版本的内容构建将导致在编译所需的库时失败。
 
-Once you've done that, we still have to do two things in VS: Create you JNI bridge with Java file and change the compile options for the Android option.
+完成这些步骤后，在VS中还有两件事情要做：创建与Java文件的JNI桥接，并更改Android选项的编译选项。
 
-In VS go to the folder where you have (assuming its called the same as in the example) the TEST.cpp source code, and create in that same folder a file named something like "native-lib.cpp". This file will contain the JNi definition needed to interop with your game on Android.
-Here is the code that you have to insert for your extension to work with the 3 demo functions that we are using.
-
-C++:
+在VS中，转到你的源代码文件夹（假设与示例中的名称相同），在该文件夹中创建一个名为 "native-lib.cpp" 的文件。该文件将包含与你的游戏在Android上进行交互所需的JNI定义。以下是你需要插入的代码，以使你的扩展能够与我们使用的三个演示函数一起工作。
 
 ```cpp
 #include <jni.h>
@@ -577,39 +575,37 @@ C++:
 #include "TEST.cpp"
 extern "C" {
     JNIEXPORT jstring JNICALL Java_com_ACOMPANY_APROJECT_MainActivity_JNIexttestString(JNIEnv* env, jclass cl, jstring _myArgument0) {
-        char* _myArgument0_nativeString = (char*)env->GetStringUTFChars(_myArgument0, 0);//Convert the passed jstring to a native string
-        jstring _myResponse = env->NewStringUTF(ext_test_String(_myArgument0_nativeString));//Call the function and store its value in _myResponse
-        env->ReleaseStringUTFChars(_myArgument0, _myArgument0_nativeString);//Release the native string from memory to avoid memory leaks
-        return (jstring)_myResponse;//Return the response
+        char* _myArgument0_nativeString = (char*)env->GetStringUTFChars(_myArgument0, 0);//将传入的jstring转换为本地字符串
+        jstring _myResponse = env->NewStringUTF(ext_test_String(_myArgument0_nativeString));//调用函数并将其值存储在_myResponse中
+        env->ReleaseStringUTFChars(_myArgument0, _myArgument0_nativeString);//释放本地字符串内存，以避免内存泄漏
+        return (jstring)_myResponse;//返回响应
     }
     JNIEXPORT jdouble JNICALL Java_com_ACOMPANY_APROJECT_MainActivity_JNIexttestDouble(JNIEnv* env, jclass cl, jdouble _myArgument0) {
-        return (jdouble)ext_test_Double(_myArgument0);//Call the extension function and return its value
+        return (jdouble)ext_test_Double(_myArgument0);//调用扩展函数并返回其值
     }
     JNIEXPORT jdouble JNICALL Java_com_ACOMPANY_APROJECT_MainActivity_JNIexttestBuffer(JNIEnv* env, jclass cl, jstring _GMSBuffPtrStr) {
-        char* _GMSBuffPtrStr_nativeString = (char*)env->GetStringUTFChars(_GMSBuffPtrStr, 0);//Convert the passed jstring to a native string
-        jdouble _myResponse = ext_test_Buffer(_GMSBuffPtrStr_nativeString);//Call the function and store its value in _myResponse
-        env->ReleaseStringUTFChars(_GMSBuffPtrStr, _GMSBuffPtrStr_nativeString);//Release the native string from memory to avoid memory leaks
-        return (jdouble)_myResponse;//Return the response
+        char* _GMSBuffPtrStr_nativeString = (char*)env->GetStringUTFChars(_GMSBuffPtrStr, 0);//将传入的jstring转换为本地字符串
+        jdouble _myResponse = ext_test_Buffer(_GMSBuffPtrStr_nativeString);//调用函数并将其值存储在_myResponse中
+        env->ReleaseStringUTFChars(_GMSBuffPtrStr, _GMSBuffPtrStr_nativeString);//释放本地字符串内存，以避免内存泄漏
+        return (jdouble)_myResponse;//返回响应
     }
 }
 ```
 
-**NOTE:** While writing the previous code, VS will complain that your code is wrong, but don't worry, its because it doesn't know about jni.h and all the things related to Java. Remember also after the function JNI you must not use "_" or it will give you issues.
+**注意：** 在编写前面的代码时，VS会抱怨你的代码有错，但不用担心，这是因为它不知道jni.h和所有与Java相关的内容。还要记住，在JNI函数之后，你不能使用“_”，否则会出现问题。
 
-As you might have already seen from the previous code, doubles are treated as jdouble and strings as jstring. Working with strings is a bit tricky beacuse you will have to use GetStringUTFChars and then release them using ReleaseStringUTFChars. If you don't release them, you will get memory leaks eventually crashing your game.
+正如你可能已经从前面的代码中看到的那样，double被视为jdouble，字符串被视为jstring。处理字符串有点棘手，因为你将不得不使用GetStringUTFChars，然后使用ReleaseStringUTFChars释放它们。如果不释放它们，你最终会遇到内存泄漏，导致游戏崩溃。
 
-The functions in JNI must be named using the following syntax:
+JNI中的函数必须使用以下语法命名：
 JNIEXPORT {RETURNTYPE} JNICALL Java_com_ACOMPANY_APROJECT_MainActivity_JNI{FUNCTION_NAME}(JNIEnv* env, jclass cl)
-Where:
+其中：
 
-- {RETURNTYPE} can be either jdouble or jstring.
-- {FUNCTION_NAME} should be the name of the function in your C++ code to make it easier to find it afterwards (**WITHOUT "_" OR YOU WILL HAVE ISSUES AFTERWARDS)**.
+- {RETURNTYPE}可以是jdouble或jstring。
+- {FUNCTION_NAME}应该是你在C++代码中的函数名，以便以后更容易找到它（**不要使用“_”，否则以后会出现问题**）。
 
-As you've seen you will always have to include the "JNIEnv* env" and "jclass cl" as arguments since these are required. All the arguments that you wish to pass, should be added after the "jclass cl" argument.
+正如你所见，你总是必须包含“JNIEnv* env”和“jclass cl”作为参数，因为这些是必需的。你希望传递的所有参数都应该在“jclass cl”参数之后添加。
 
-For the last step, in VS in the same folder where your natice-lib.cpp and TEST.cpp files are, go to "CMakeLists.txt", and you will have to change the information to the following (assuming your project is named TEST and your source C++ file is TEST.cpp)
-
-Code:
+对于最后一步，在VS中，与你的native-lib.cpp和TEST.cpp文件所在的同一文件夹中，转到“CMakeLists.txt”，你将不得不将信息更改为以下内容（假设你的项目名为TEST，你的源C++文件是TEST.cpp）
 
 ```
 # Add source to this project's executable.
@@ -626,66 +622,65 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 ```
 
-What this will do is that when compiling for Android, it will compile using as source the "native-lib.cpp", and when not compiling for Android, it will use "TEST.cpp".
+这样做的目的是，当为Android编译时，将使用"native-lib.cpp"作为源文件进行编译，而不为Android编译时，将使用"TEST.cpp"。
 
-If you now click on save, you should see in the upper part of VS that from the two dropdowns you can select "Local Machine" and "Android x86_64 Release" / "Android arm64-v8a Release" / "Android armeabi-v7a Release". Once you have selected those 2 options in the dropdown, go to Build > Build All. This will start to compile your C++ code. If everything went OK (you don't have erros in your code, your tools are OK, etc...) you should see a message like: "Build All succeeded."
-You will have to repeat this process for these 3 build options:
+如果你现在点击保存，你应该会在VS的上部看到两个下拉菜单，可以选择“Local Machine”和“Android x86_64 Release”/“Android arm64-v8a Release”/“Android armeabi-v7a Release”。一旦你在下拉菜单中选择了这两个选项，就去到“Build” > “Build All”。这将开始编译你的C++代码。如果一切顺利（你的代码没有错误，你的工具没有问题等等），你应该会看到一条消息，类似于：“Build All succeeded.”
 
-- "Local Machine" and "Android x86_64 Release"
-- "Local Machine" and "Android arm64-v8a Release"
-- "Local Machine" and "Android armeabi-v7a Release"
+你需要为以下三个构建选项重复此过程：
 
-Once you have build for all the Android architectures and your builds have all succeded, you will be interested in the .SO file generated for each architecture. They will be located here (asumming your project is called TEST and its located in "C:\Users\aleja\Desktop\TEST")
+- “Local Machine”和“Android x86_64 Release”
+- “Local Machine”和“Android arm64-v8a Release”
+- “Local Machine”和“Android armeabi-v7a Release”
+
+一旦你为所有的Android架构完成了构建，并且所有构建都成功，你将对每个架构生成的.SO文件感兴趣。它们将位于以下位置（假设你的项目名为TEST，并且位于“C:\Users\aleja\Desktop\TEST”）：
 
 - C:\Users\aleja\Desktop\TEST\out\build\android\x86_64\TEST\libTEST.so
 - C:\Users\aleja\Desktop\TEST\out\build\android\arm64-v8a\TEST\libTEST.so
 - C:\Users\aleja\Desktop\TEST\out\build\android\armeabi-v7a\TEST\libTEST.so
 
+#### 准备 lib.jar
 
+Android 需要 lib.jar。按照以下步骤进行准备：
 
+在你的项目外，计算机上的任意位置，创建一个名为“lib”的文件夹。在该文件夹内创建三个文件夹，名称如下（假设你的项目名为TEST，并位于“C:\Users\aleja\Desktop\TEST”）：
 
+- x86_64 --> 将 C:\Users\aleja\Desktop\TEST\out\build\android\x86_64\TEST\libTEST.so 文件复制到此文件夹中
+- arm64-v8a --> 将 C:\Users\aleja\Desktop\TEST\out\build\android\arm64-v8a\TEST\libTEST.so 文件复制到此文件夹中
+- armeabi-v7a --> 将 C:\Users\aleja\Desktop\TEST\out\build\android\armeabi-v7a\TEST\libTEST.so 文件复制到此文件夹中
 
-Preparing the lib.jar
+**注意：** 你可以为三种Android架构创建扩展，但是，如果你或你的最终用户不想为特定架构构建最终的Android可执行文件，你必须删除你不想为其构建的架构文件夹（例如，如果你的游戏不支持armeabi-v7a，删除armeabi-v7a文件夹）。如果你没有这样做，而是在接下来的步骤中使用这些文件夹创建.zip和.jar文件，当提交到Google Play时，它会认为你的游戏包含你未在GMS中构建的特定架构，从而使你的游戏在那些设备上可用，这可能会导致你的游戏在这些设备上无法启动，从而导致差评。
 
+现在，将lib文件夹压缩成.zip文件（包括lib文件夹）。完成后，将lib.zip重命名为lib.jar。
 
-The lib.jar is needed by Android. To prepare it follow these steps.
-Outside of your project, anywhere on your computer, create a folder named "lib". Inside that folder create three folder named exactly like this (asumming your project is called TEST and its located in "C:\Users\aleja\Desktop\TEST"):
+这样，你就会有一个GMS需要的lib.jar文件。
 
-- x86_64 --> Copy inside this folder the C:\Users\aleja\Desktop\TEST\out\build\android\x86_64\TEST\libTEST.so file
-- arm64-v8a --> Copy inside this folder the C:\Users\aleja\Desktop\TEST\out\build\android\arm64-v8a\TEST\libTEST.so file
-- armeabi-v7a --> Copy inside this folder the C:\Users\aleja\Desktop\TEST\out\build\android\x86_64\TEST\armeabi-v7a\TEST\libTEST.so file
+#### 为Android准备GMS扩展结构并添加lib.jar
 
-**NOTE:** You can create the extension for the three Android architectures, however, if you or your final user don't want to build your final Android executable for an specific architecture, you MUST delete the architecture folder that you don't want to build for (for example, if your game won't be avialble for armeabi-v7a, delete the armeabi-v7a folder). If you fail to this and create the .zip and .jar file in the following steps with these folders, when submiting to Google Play it will assume that your game includes that specific architecture that you haven't build for in GMS, making your game available for those devices which will probably make you to get bad reviews since your game won't be able to start on those devices.
+GMS在处理Android扩展时使用特定的文件夹结构。
 
-Now, get the lib folder and compress it to .zip file (including the lib folder). After you have done that, rename your lib.zip to lib.jar.
-With this, you will now have your lib.jar ready that is needed by GMS.
+在GMS中打开你的项目，确保在扩展本身和扩展属性中都标记了“Copies to”到“Android”平台。在扩展中，勾选“Platform settings”下的“Android”复选框，这将显示一个新窗口。
 
+在“Class name”文本框中输入“class_testExt”，然后保存你的项目。
 
+在Windows文件资源管理器中，进入你的GMS项目。你会在其中找到一个名为“extensions”的文件夹。在“extensions”文件夹内，你应该找到一个与在GMS中创建的扩展名称完全匹配的文件夹。如果进入该文件夹，你必须创建一个名为“AndroidSource”的文件夹。假设你的GMS项目位于“C:\Users\aleja\Desktop\GMS_ExtTutorial”，你的扩展名为“ext_test”，则新创建的文件夹路径应为：
 
-Preparing the GMS extension structure for Android and adding the lib.jar
+“C:\Users\aleja\Desktop\GMS_ExtTutorial\extensions\ext_test\AndroidSource”
 
+在“AndroidSource”文件夹内，创建两个文件夹：“Java”和“libs”。
 
-GMS uses an specific folder structure inside the extension when working with extensions on Android.
-Open your project in GMS and make sure you have marked the "Copies to" to the "Android" platform in both the extension itself and the extension properties. In the extension then mark the checkbox of "Android" under "Platform settings", which will show up a new window.
-In the "Class name" textbox put "class_testExt" and save your project.
+在“libs”文件夹内，复制之前创建的lib.jar。
 
-In the Windows File explorer go to your GMS project. You will find in it a folder named "extensions". Inside the "extensions" folder you should find a folder that matches the exact name of the extension that you created in GMS. If you go in it you must create a folder named "AndroidSource". Assuming your GMS is located in "C:\Users\aleja\Desktop\GMS_ExtTutorial" and your extension name is "ext_test", your newly created folder path should be this: "C:\Users\aleja\Desktop\GMS_ExtTutorial\extensions\ext_test\AndroidSource"
-Inside the "AndroidSource" folder, create tow folders: "Java" and "libs".
-Inside the "libs" folder, copy the lib.jar that you created previously.
+通过这些步骤，你将完成GMS扩展结构的Android设置。
 
-With all these steps, you would have setup the GMS extension structure for Android. ![:banana:](http://i.imgur.com/Dx8J3G1.gif)
+#### 编写Java代码
 
+最后一步是编写Java代码，GMS将使用这些代码调用lib.jar中的内容并使用它。
 
+从之前在扩展中创建的所有文件夹中，转到“AndroidSource\Java\”文件夹，并在其中创建两个新文件，分别命名为：“MainActivity.java”和“class_testExt.java”。
 
-Writing the Java code
+建议你使用像VSCode这样的文本编辑器来打开这两个需要编辑的Java文件。
 
-
-One last step that we are missing is to write the Java code that will be used by GMS for being able to call the contents in lib.jar and use it.
-From all the previously created folders inside your extension, head over to the "AndroidSource\Java\" one, and inside it, create two new files named: "MainActivity.java" and "class_testExt.java".
-I recommend you for this part using a text editor like notepad++ to open these two Java files that you will have to edit.
-Here is the code that you should be using for "MainActivity.java" to work with the three demo functions
-
-Java:
+以下是“MainActivity.java”应使用的代码，以便与三个演示函数一起工作：
 
 ```java
 package com.ACOMPANY.APROJECT;
@@ -699,9 +694,7 @@ public class MainActivity{
 }
 ```
 
-Here is the code that you should be using for "class_testExt.java" to work with the three demo functions
-
-Java:
+以下是“class_testExt.java”应使用的代码，以便与三个演示函数一起工作：
 
 ```java
 package ${YYAndroidPackageName};
@@ -724,16 +717,15 @@ public class class_testExt{
 }
 ```
 
-**NOTE:** From the previous Java code, the name of the file must much the public class name, so if the public class is "class_testExt", the file name must be "class_testExt.java".
+**注意：** 根据之前的Java代码，文件名必须与公共类名一致，所以如果公共类是“class_testExt”，那么文件名必须是“class_testExt.java”。
 
-If everything was done OK, you should now be able to call the three functions with no issues from your Android GMS executable ![:)](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)
-Congratulations, your extension should now be working for Android ![:bunny:](http://i.imgur.com/vlCK4R9.gif)
-**NOTE:** I recommend you to use the Android Studio emulator to test your extension before distributing your game.
+如果一切都做得正确，你现在应该能够在Android GMS可执行文件中无问题地调用这三个函数。
 
+恭喜你，现在你的扩展应该可以在Android上正常工作了。
 
+**注意：** 我建议你在发布游戏之前使用Android Studio模拟器测试你的扩展。
 
+#### 适用于 MacOS 和 iOS
 
-
-**FOR MacOS and iOS**
-This post was too long, so I divided it into another post.
-The part for MacOS and iOS can be found [here](https://forum.gamemaker.io/index.php?threads/guide-create-a-c-extension-for-gms-that-works-for-windows-ubuntu-linux-android-macos-and-ios-part-2-uses-visual-studio-and-cmake.102978/).
+这篇帖子太长了，所以我将其分成了另一篇帖子。
+适用于 MacOS 和 iOS 的部分可以在[这里找到](AGuidetoGenericC++Extensions2.md)。
