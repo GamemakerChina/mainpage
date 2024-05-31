@@ -23,8 +23,6 @@ categories:
 
 **注意：** 如果你有任何疑问或想提出建议，可以写评论，给我发论坛消息，或发邮件到[alejandroibrahimojea@gmail.com](mailto:alejandroibrahimojea@gmail.com)。
 
-**注意 2：** 这个指南必须分为两个部分。第二部分可以在[这里](AGuidetoGenericC++Extensions2.md)找到。
-
 ## 一切的起源
 
 基本上，我想制作一个类似Alchemy的游戏。问题是？在GMS中没有办法使用真实的SQL语法或使用任何类型的数据库引擎。
@@ -58,7 +56,7 @@ CMake将允许我们从C++源代码编译出制作扩展所需的文件，以用
 
 ![1681849830741.png](1681849830741.png)
 
-在 CMakeLists.txt 文件中，你需要打开它并编辑包含你的 .h 文件的那一行(在这种情况下是 add_executable (TEST "TEST.cpp" "TEST.h") )，删除“Test.h”部分。
+在 CMakeLists.txt 文件中，你需要打开它并编辑包含你的 .h 文件的那一行(在这种情况下是 add_executable (TEST "TEST.cpp" "TEST.h") )，删除“Test.h”。
 
 此外，你必须将 add_executable 更改为 add_library，因为我们将要编译的是创建一个库。你还必须添加 "SHARED" 部分，这样它就会创建正确的库类型。你的代码应该像这样：
 
