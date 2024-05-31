@@ -1,5 +1,5 @@
 ---
-title: 通用C++扩展指南（第一部分）
+title: 通用C++扩展指南
 date: 2023/04/21
 categories:
  - 论坛教程
@@ -725,7 +725,248 @@ public class class_testExt{
 
 **注意：** 我建议你在发布游戏之前使用Android Studio模拟器测试你的扩展。
 
-#### 适用于 MacOS 和 iOS
+### 编译为MacOS
+要编译为MacOS，您需要一台装有MacOS的物理计算机。您也可以使用虚拟机（如VMWare），但这并不是Yoyo官方支持的，而且在技术上也不被苹果的分发许可证所允许。
+然后，您需要按照[这篇GMS文章](https://help.yoyogames.com/hc/en-us/articles/235186128-Setting-Up-For-macOS)中描述的步骤配置您的机器。从文章中您根本不需要开发者许可证。您只需要安装XCode。
+最后，在您的MacOS机器上安装"CMake"和"Ninja"（在默认路径）。如果您在Google上搜索如何安装这些工具，会有很多在线文章可以参考。
 
-这篇帖子太长了，所以我将其分成了另一篇帖子。
-适用于 MacOS 和 iOS 的部分可以在[这里找到](AGuidetoGenericC++Extensions2.md)。
+此外，在VS上您还需要设置与MacOS机器的连接。在VS的顶部部分，如果您从两个下拉菜单中选择最左边的一个（通常应该是"Local machine"），您将看到下拉菜单中有一个选项，名称为"Manage connections"。点击"Add"然后添加所有连接到MacOS机器的信息。现在，如果连接成功，在下拉菜单中您应该看到您配置的IP作为可选项之一。
+
+在MacOS上，您的C++代码应该被编译为.dylib（动态链接库）。
+这是GMS在MacOS上使用C++扩展所需要的。
+GMS（最新版本）只支持x64可执行文件，因此只有创建与x64兼容的.dylib才有意义。为此，请前往VS并打开"CMakePresets.json"文件。在这里，您需要向"configurePresets"添加一个新条目。以下代码展示了一个示例（假设您没有其他预设项）：
+
+```json
+{
+  "version": 3,
+  "configurePresets": [
+    //MacOS release
+    {
+      "name": "macos-release",
+      "displayName": "macOS Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "/usr/bin/gcc",
+        "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+        "CMAKE_MAKE_PROGRAM": "/usr/local/bin/ninja"
+      }
+    }
+  ]
+}
+```
+
+如果现在点击保存，您应该会在VS的顶部看到从两个下拉菜单中可以选择"YOUR MACOS MACHINE IP"和"macOS Release"。
+
+VS目前存在一个bug。如果这是您首次为MacOS（或iOS）构建项目，您可能会看到一个弹出窗口出现在VS的顶部，显示未找到CMake工具。如果提示您安装工具，请点击"YES"。您会看到VS会再次尝试安装这些工具，但会失败。这是由于VS目前存在的一个bug。
+
+您需要转到您的MacOS机器上，搜索VS文件夹。这个文件夹通常位于您的用户目录下，默认情况下是隐藏的，名称为".vs"。
+
+在这个文件夹里，您会找到一个名为"cmake"的文件夹。在"cmake"文件夹中，您必须清除所有文件，并复制您在前面步骤中安装在MacOS上的CMake应用程序的所有内容。这应该可以修复VS，并允许您编译您的C++代码。
+
+回到VS，在顶部的两个下拉菜单中，您可以选择"YOUR MACOS MACHINE IP"和"macOS Release"。一旦您在下拉菜单中选择了这两个选项，请转到Build > Build All。这将开始编译您的C++代码。如果一切顺利（您的代码没有错误，您的工具正常，等等...），您应该会看到一条消息，例如："Build All succeeded."。
+
+如果这是您收到的消息，您将可以在远程机器上找到这些文件。转到您的用户名文件夹 > ".vs" > "YOURPROJECTNAME" > "out" > "build" > "macos-release" > "YOURPROJECTNAME"。在该路径中，您会找到一组文件，在其中，您将找到一个.dylib文件，您需要将其发送回您的Windows机器。
+
+那个.dylib文件就是准备提供给GMS的库文件。转到GMS，在扩展中添加.dylib文件作为代理文件（[这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)您将找到如何操作的方法），在扩展中标记"MacOS"平台的复选框以便包含它，并执行您的游戏。
+
+如果一切顺利，您现在应该能够从您的MacOS GMS可执行文件中无误地调用这三个测试函数。
+
+恭喜，您的扩展现在应该可以在MacOS上正常工作了！
+
+
+### 编译为iOS
+
+#### 生成所需的两个.dylib文件
+
+要编译为iOS，您需要一台装有MacOS的物理计算机。您也可以使用虚拟机（如VMWare），但这并不是Yoyo官方支持的，而且在技术上也不被苹果的分发许可证所允许。
+
+然后，您需要按照[这篇GMS文章](https://help.yoyogames.com/hc/en-us/articles/235186128-Setting-Up-For-macOS)中描述的步骤配置您的机器。这篇文章是为MacOS设计的，但您只需要安装XCode（也最好获取XCode的iOS模拟器）。从文章中您根本不需要开发者许可证。您只需要安装XCode。
+
+最后，在您的MacOS机器上安装"CMake"和"Ninja"（在默认路径）。如果您在Google上搜索如何安装这些工具，会有很多在线文章可以参考。
+
+此外，在VS上您还需要设置与MacOS机器的连接。在VS的顶部部分，如果您从两个下拉菜单中选择最左边的一个（通常应该是"Local machine"），您将看到下拉菜单中有一个选项，名称为"Manage connections"。点击"Add"然后添加所有连接到MacOS机器的信息。现在，如果连接成功，在下拉菜单中您应该看到您配置的IP作为可选项之一。
+
+对于iOS，我们会使用一个小技巧，首先需要将您的C++代码编译成.dylib（动态链接库）。
+
+然后，我们需要编写一些Objective-C++代码以便在iOS中使用.dylib文件。
+
+我们需要为iOS创建两个不同的.dylib文件。一个是为真实的iOS设备架构（arm64），另一个是为iOS模拟器架构（x86_64）。
+
+为此，请转到VS并打开"CMakePresets.json"文件。在这里，您需要向"configurePresets"添加一个新条目。以下代码展示了一个示例（假设您没有其他预设项）：
+
+```json
+{
+  "version": 3,
+  "configurePresets": [
+    //iOS release
+    {
+      "name": "ios-release",
+      "displayName": "iOS Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "iOS",
+        "CMAKE_OSX_SYSROOT": "iphoneos",
+        "CMAKE_OSX_ARCHITECTURES": "arm64",
+        "CMAKE_C_COMPILER": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+        "CMAKE_CXX_COMPILER": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      }
+    },
+    //iOS emulator
+    {
+      "name": "ios-emulator",
+      "displayName": "iOS Emulator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      },
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "iOS",
+        "CMAKE_OSX_ARCHITECTURES": "x86_64",
+        "CMAKE_OSX_SYSROOT": "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk",
+        "CMAKE_C_COMPILER": "/usr/bin/gcc",
+        "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+        "CMAKE_MAKE_PROGRAM": "/usr/local/bin/ninja"
+      }
+    }
+  ]
+}
+```
+
+如果现在点击保存，您应该会在VS的顶部看到从两个下拉菜单中可以选择"YOUR MACOS MACHINE IP"和"iOS Release"或"iOS Emulator"。
+
+VS目前存在一个bug。如果这是您首次为MacOS（或iOS）构建项目，您可能会看到一个弹出窗口出现在VS的顶部，显示未找到CMake工具。如果提示您安装工具，请点击"YES"。您会看到VS会再次尝试安装这些工具，但会失败。这是由于VS目前存在的一个bug。
+
+您需要转到您的MacOS机器上，搜索VS文件夹。这个文件夹通常位于您的用户目录下，默认情况下是隐藏的，名称为".vs"。
+
+在这个文件夹里，您会找到一个名为"cmake"的文件夹。在"cmake"文件夹中，您必须清除所有文件，并复制您在前面步骤中安装在MacOS上的CMake应用程序的所有内容。这应该可以修复VS，并允许您编译您的C++代码。
+
+您需要为"iOS Release"和"iOS Emulator"都进行构建。
+
+回到VS，在顶部的两个下拉菜单中，您可以选择"YOUR MACOS MACHINE IP"和"iOS Release"或"iOS Emulator"。一旦您在下拉菜单中选择了这两个选项，请转到Build > Build All。这将开始编译您的C++代码。如果一切顺利（您的代码没有错误，您的工具正常，等等...），您应该会看到一条消息，例如："Build All succeeded."。
+
+如果这是您收到的消息，您将可以在远程机器上找到所需的.dylib文件。转到您的用户名文件夹 > ".vs" > "YOURPROJECTNAME" > "out" > "build"
+在这个路径下，如果您已经为两种iOS发布类型构建了项目，您应该会看到两个文件夹：
+
+- "ios-release" > "YOURPROJECTNAME" 这里会有一个.dylib文件。将其复制回到您的Windows机器，并命名为像{yourprojectname}_iosdevice.dylib这样的名称。
+
+- "ios-emulator" > "YOURPROJECTNAME" 这里会有一个.dylib文件。将其复制回到您的Windows机器，并命名为像{yourprojectname}_iosemulator.dylib这样的名称。
+
+这两个.dylib文件必须包含在您的GMS项目中的"Included files"中（更多关于"Included files"的信息请查看这里）。
+
+**注意：** 一旦您将这两个.dylib文件添加到您的包含文件中，请确保从GMS中双击它们，并指定它们只能用于iOS，而不是其他平台。如果您未能这样做，您在其他平台上的最终可执行文件大小将因包含了不必要的代码而增加。
+
+
+#### 使用Objective-C++在GMS和.dylib之间创建桥梁
+
+为了让您的扩展在iOS上工作，最后一步是使用一些Objective-C++代码在GMS和您的.dylib之间创建一个桥梁。
+
+在GMS的扩展文件中（.ext和.yy所在的位置），您首先需要创建一个名为“iOSSource”的文件夹，用于存放您的代码。
+
+进入新创建的文件夹，并创建两个文件。
+
+这两个文件的名称可以随意。对于本教程，我们将它们命名为“iOS_extTest.h”和“iOS_extTest.mm”。
+
+为了使扩展与演示函数一起工作，您需要放置以下代码：
+
+"iOS_extTest.h" 的代码:
+
+```objectivec
+@interface extTest : NSObject
+{
+}
+- (NSString*) ext_test_String:(char*)_myArgument0;
+- (double) ext_test_Double:(double)_myArgument0;
+- (double) ext_test_Buffer:(char*)_GMSBuffPtrStr;
+@end
+```
+
+"iOS_extTest.mm" 的代码:
+
+```objectivec
+#import "iOS_extTest.h"
+#import <dlfcn.h>
+
+static void* dylibHandle = NULL;//The handle to the dylib
+
+@implementation extTest
+    - (void) Init {
+        NSBundle *bundle = [NSBundle mainBundle];
+        NSString *bundlePath = [bundle executablePath];
+        NSString *bundleDir = [bundlePath stringByDeletingLastPathComponent];
+        NSString *libPath_normalDevice = [bundleDir stringByAppendingPathComponent:@"games/extTest_iosdevice.dylib"];
+        NSString *libPath_emu = [bundleDir stringByAppendingPathComponent:@"games/extTest_iosemulator.dylib"];
+        dylibHandle = dlopen([libPath_normalDevice UTF8String], RTLD_LAZY);//Load and try to get the handle to the dylib
+        if (dylibHandle == NULL) {//If we were not able to load the dylib
+            NSLog(@"yoyo: iOS error loading dynamic library (for iOS real device): %s", dlerror());
+            NSLog(@"yoyo: Trying to load dynamic library for iOS emulator");
+            dylibHandle = dlopen([libPath_emu UTF8String], RTLD_LAZY);//Load and try to get the handle to the dylib
+            if (dylibHandle == NULL) {//If we were not able to load the dylib
+                NSLog(@"yoyo: iOS error loading dynamic library (for iOS emulator): %s", dlerror());
+            }else{
+                NSLog(@"yoyo: iOS dylib opened Ok and ready to use (emulator)");
+            }
+        }else{
+            NSLog(@"yoyo: iOS dylib opened Ok and ready to use (real device)");
+        }
+    }
+ 
+    - (NSString*) ext_test_String:(char*)_myArgument0 {
+        if(dylibHandle==NULL){//If the dynamic library didn't load OK
+            NSLog(@"yoyo: extTest for iOS: dylib handle not opened OK");
+            return @"";
+        }
+        char* (*ext_test_String)(char*) = (char* (*)(char*)) dlsym(dylibHandle, "ext_test_String");
+        return [NSString stringWithUTF8String:ext_test_String(_myArgument0)];
+    }
+    - (double) ext_test_Double:(double)_myArgument0 {
+        if(dylibHandle==NULL){//If the dynamic library didn't load OK
+            NSLog(@"yoyo: extTest for iOS: dylib handle not opened OK");
+            return 0;
+        }
+        double (*ext_test_Double)(double) = (double (*)(double)) dlsym(dylibHandle, "ext_test_Double");
+        return (double)ext_test_Double(_myArgument0);
+    }
+    - (double) ext_test_Buffer:(char*)_GMSBuffPtrStr {
+        if(dylibHandle==NULL){//If the dynamic library didn't load OK
+            NSLog(@"yoyo: extTest for iOS: dylib handle not opened OK");
+            return 0;
+        }
+        double (*ext_test_Buffer)(char*) = (double (*)(char*)) dlsym(dylibHandle, "ext_test_Buffer");
+        return (double)ext_test_Buffer(_GMSBuffPtrStr);
+    }
+@end
+```
+
+从之前的“iOS_extTest.mm”代码中，请注意以下几点：
+
+- 我在`void init`中所采用的策略是为了能够加载.dylib。它会首先尝试加载iOS真机的.dylib，如果失败，它会尝试加载iOS模拟器的.dylib。
+- 您必须更改变量“libPath_normalDevice”和“libPath_emu”，使其包含您之前创建的.dylib的名称（路径中必须包括“games/”）。
+- 如果dylib加载失败，您的函数应返回一个回退值，采用类似于我在以下示例中所做的策略。这是为了避免您的iOS应用程序崩溃。
+
+还有最后一步！
+
+进入GMS，打开扩展并点击iOS将其作为一个平台。当新窗口显示时，在“Class name”字段中，您必须填写您在Objective-C++代码中实现的类名（在本示例中为“extTest”）。
+
+![1682022712815.png](1682022712815.png)
+
+如果一切顺利，您现在应该能够执行您的游戏并从iOS GMS可执行文件中调用三个示例函数而不会出现问题。
+
+恭喜，您的扩展现在应该可以在iOS上工作了！
