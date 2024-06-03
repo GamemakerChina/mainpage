@@ -35,6 +35,7 @@ export default defineUserConfig({
       { text: '主页', link: '/' },
       { text: 'GM 文档',
         children: [
+          { text: '汉化文档（或官方文档）', link: '/tool/manual.html'},
           { text: '汉化文档（外挂式，在线）', link: 'https://manual-plugged.gm-cn.top/' },
           { text: '汉化文档（外挂式，仓库下载）', link: 'https://github.com/GamemakerChina/manual-plugged/archive/refs/heads/main.zip' },
           { text: '汉化文档（静态式，在线）', link: 'https://manual-static.gm-cn.top/' },

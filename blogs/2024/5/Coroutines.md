@@ -496,7 +496,7 @@ CO_END
 3) 一个对象的实例。
 4) 或从一个循环程序输出的`YIELD'。
 
-当在数组上迭代时，迭代器变量是由数组本身给出的值。当迭代结构时，迭代器变量从结构中获得数值；要迭代结构的键，请使用[`variable_struct_get_names()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Variable_Functions/variable_struct_get_names.htm)。
+当在数组上迭代时，迭代器变量是由数组本身给出的值。当迭代结构时，迭代器变量从结构中获得数值；要迭代结构的键，请使用[`variable_struct_get_names()`](/tool/manual.html?path=GameMaker_Language/GML_Reference/Variable_Functions/variable_struct_get_names.htm)。
 
 当迭代对象的实例时，迭代器变量被赋予实例引用（实例的结构表示，例如，在实例的范围内调用`self'得到的）。**请注意**，"FOREACH "循环的行为与GameMaker的本地 "with() "循环不同："FOREACH "循环中的代码范围不会改变。
 

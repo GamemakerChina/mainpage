@@ -39,7 +39,7 @@ GameMaker 将所有游戏图形存储在 **纹理页** 上。纹理页是一整�
 draw_texture_flush();
 ```
 
-此函数将清除纹理内存中的所有图像数据。请注意，这可能会导致在运行绘制事件（Draw Event）时首次加载新纹理时出现短暂的闪烁，因此为了避免这种情况，您还应在同一事件中 “初始化” 纹理，只需调用一个 [预获取函数](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_prefetch.htm?rhsearch%3Dpre%20fetch%26rhhlterm%3Dpre%20fetch)（每个所需页面一个）即可。由于这是在创建事件中进行的，所以不会被人看到，但可以防止在实际绘制游戏图形时出现任何闪烁。最终的创建事件将如下所示：
+此函数将清除纹理内存中的所有图像数据。请注意，这可能会导致在运行绘制事件（Draw Event）时首次加载新纹理时出现短暂的闪烁，因此为了避免这种情况，您还应在同一事件中 “初始化” 纹理，只需调用一个 [预获取函数](/tool/manual.html?path=GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_prefetch.htm?rhsearch%3Dpre%20fetch%26rhhlterm%3Dpre%20fetch)（每个所需页面一个）即可。由于这是在创建事件中进行的，所以不会被人看到，但可以防止在实际绘制游戏图形时出现任何闪烁。最终的创建事件将如下所示：
 
 ```gml
 draw_texture_flush();
@@ -57,7 +57,7 @@ sprite_prefetch(spr_menu);
 
 ### 动态纹理
 
-您还可以将纹理组标记为 [动态](https://manual.gamemaker.io/monthly/en/Settings/Texture_Information/Dynamic_Textures.htm) 。虽然可以预取和刷新纹理组，以便从显存（VRAM）中加载和卸载纹理组，但它们仍保存在 RAM 中。动态纹理组可以将纹理组保存在磁盘上，只有在需要时才将其加载到 RAM（随后加载到 VRAM）中。加载动态纹理组的方法是使用函数：
+您还可以将纹理组标记为 [动态](/tool/manual.html?path=Settings/Texture_Information/Dynamic_Textures.htm) 。虽然可以预取和刷新纹理组，以便从显存（VRAM）中加载和卸载纹理组，但它们仍保存在 RAM 中。动态纹理组可以将纹理组保存在磁盘上，只有在需要时才将其加载到 RAM（随后加载到 VRAM）中。加载动态纹理组的方法是使用函数：
 
 ```gml
 texturegroup_load(groupname, [prefetch=true])
@@ -71,11 +71,11 @@ texturegroup_unload(groupname)
 
 ### 运行时添加资产
 
-在 GameMaker 中可以从外部载入精灵，也可以使用 [sprite_add()](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add.htm) 等函数创建新资产。不过，以这种方式创建的每个新资产都会 **创建一个新的纹理页** ，这意味着（例如）添加 10 个新的精灵将创建 10 个*新的纹理页*！而每次绘制这些精灵时，都会进行一次新的纹理交换，并中断显卡的批处理。
+在 GameMaker 中可以从外部载入精灵，也可以使用 [sprite_add()](/tool/manual.html?path=GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add.htm) 等函数创建新资产。不过，以这种方式创建的每个新资产都会 **创建一个新的纹理页** ，这意味着（例如）添加 10 个新的精灵将创建 10 个*新的纹理页*！而每次绘制这些精灵时，都会进行一次新的纹理交换，并中断显卡的批处理。
 
 可以想象，这样做的效率并不高，因此（与以前版本的 GameMaker 不同）应避免这样做，而应在 IDE 中将所有图形资产添加到游戏捆绑包中。请注意，您可以使用这些函数来添加/创建少量图片，它们不会对性能产生负面影响，但应避免以这种方式添加大量图片，因为这将会产生影响。
 
-**注意：** 函数 [*sprite_add()*](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add.htm) *在精灵加载完成之前，该函数会阻止代码的进一步执行。您可以使用* [*sprite_add_ext()*](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add_ext.htm) 以异步方式加载精灵。
+**注意：** 函数 [*sprite_add()*](/tool/manual.html?path=GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add.htm) *在精灵加载完成之前，该函数会阻止代码的进一步执行。您可以使用* [*sprite_add_ext()*](/tool/manual.html?path=GameMaker_Language/GML_Reference/Asset_Management/Sprites/Sprite_Manipulation/sprite_add_ext.htm) 以异步方式加载精灵。
 
 ## 绘制优化
 
@@ -87,7 +87,7 @@ texturegroup_unload(groupname)
 gpu_set_zwriteenable(true);
 ```
 
-不过，如果游戏允许，您可以在处理表面时使用 [surface_depth_disable](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Drawing/Surfaces/surface_depth_disable.htm) 禁用深度缓冲区，然后让绘制顺序来处理一切。禁用深度缓冲区后，创建的曲面将不会带有深度缓冲区。要禁用深度缓冲区，请在创建表面前调用以下命令：
+不过，如果游戏允许，您可以在处理表面时使用 [surface_depth_disable](/tool/manual.html?path=GameMaker_Language/GML_Reference/Drawing/Surfaces/surface_depth_disable.htm) 禁用深度缓冲区，然后让绘制顺序来处理一切。禁用深度缓冲区后，创建的曲面将不会带有深度缓冲区。要禁用深度缓冲区，请在创建表面前调用以下命令：
 
 ```gml
 surface_depth_disable(true);
@@ -104,7 +104,7 @@ gpu_set_ztestenable(false);
 
 ### 混合模式
 
-绘制时，GameMaker 会通过图形管道发送 “批” 图形数据进行绘制，显然您希望尽可能减少这一操作的频率。通常情况下您不需要担心这个问题，但如果您使用 [混合模式](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_set_blendmode_ext.htm?rhsearch%3Dblend%20mode%26rhhlterm%3Dblend%20mode) 进行绘制，那么每次调用设置混合模式都会破坏当前的纹理批次，而多个实例的多次调用可能会对您的游戏产生不利影响。
+绘制时，GameMaker 会通过图形管道发送 “批” 图形数据进行绘制，显然您希望尽可能减少这一操作的频率。通常情况下您不需要担心这个问题，但如果您使用 [混合模式](/tool/manual.html?path=GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_set_blendmode_ext.htm?rhsearch%3Dblend%20mode%26rhhlterm%3Dblend%20mode) 进行绘制，那么每次调用设置混合模式都会破坏当前的纹理批次，而多个实例的多次调用可能会对您的游戏产生不利影响。
 
 如何解决这个问题？尝试只使用一个实例来设置混合模式，然后绘制所有需要的内容。例如：
 
@@ -125,10 +125,10 @@ gpu_set_blendmode(bm_normal);
 
 GameMaker 中有两个绘制功能经常被忽视，但它们都能大大加快绘制过程。它们是：
 
-- [gpu_set_alphatestenable()](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_alphatestenable.htm?rhsearch%3Dalphatest%26rhhlterm%3Dalphatest)
-- [gpu_set_blendenable()](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_blendenable.htm?rhsearch%3Dblend%20enable%26rhhlterm%3Dblend%20enable)
+- [gpu_set_alphatestenable()](/tool/manual.html?path=GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_alphatestenable.htm?rhsearch%3Dalphatest%26rhhlterm%3Dalphatest)
+- [gpu_set_blendenable()](/tool/manual.html?path=GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_blendenable.htm?rhsearch%3Dblend%20enable%26rhhlterm%3Dblend%20enable)
 
-这些功能有什么帮助呢？第一种方法可以启用 **Alpha 测试**，基本上是检查每个像素的 Alpha 值，如果它高于混合阈值（0 到 255 之间的一个值），就会被绘制出来。从本质上讲，这将 “丢弃” 任何 Alpha 值低于测试值的像素，也就是说永远不会绘制它（因为即使 Alpha 值为零的像素也会正常 “绘制”），这也是加快没有 Alpha 梯度的复古像素艺术图形游戏速度的绝佳方法。请注意，您可以使用函数 [gpu_set_alphatestref()](https://manual-en.yoyogames.com/GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_alphatestref.htm?rhsearch%3Dalphatestref%26rhhlterm%3Dalphatestref) 设置 Alpha 测试参考值。
+这些功能有什么帮助呢？第一种方法可以启用 **Alpha 测试**，基本上是检查每个像素的 Alpha 值，如果它高于混合阈值（0 到 255 之间的一个值），就会被绘制出来。从本质上讲，这将 “丢弃” 任何 Alpha 值低于测试值的像素，也就是说永远不会绘制它（因为即使 Alpha 值为零的像素也会正常 “绘制”），这也是加快没有 Alpha 梯度的复古像素艺术图形游戏速度的绝佳方法。请注意，您可以使用函数 [gpu_set_alphatestref()](/tool/manual.html?path=GameMaker_Language/GML_Reference/Drawing/GPU_Control/gpu_get_alphatestref.htm?rhsearch%3Dalphatestref%26rhhlterm%3Dalphatestref) 设置 Alpha 测试参考值。
 
 Alpha 混合功能的作用与此不同，它可以用来关闭所有 Alpha 混合功能。这意味着绘制的任何带有 Alpha 的精灵或背景都将是完全不透明的。该功能可在绘制过程中的任何时候使用，因此如果您正在手动绘制一个没有 Alpha 的背景，那么您可以关闭 Alpha 混合功能，绘制背景，然后在接下来的绘制过程中再次开启。在某些游戏中，这可以大大提高速度，因此如果你正在绘制不需要 Alpha 的东西，可以考虑关闭它（注意，它可以根据需要随时启用或禁用，而且开销很小）。
 
@@ -185,7 +185,7 @@ layer_script_end(_layer_id, blend_normal);
 
 ### 提前退出 if
 
-GameMaker 对于 [if](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Language_Features/If_Else_and_Conditional_Operators.htm) 语句有一个提前退出机制。 考虑以下代码：
+GameMaker 对于 [if](/tool/manual.html?path=GameMaker_Language/GML_Overview/Language_Features/If_Else_and_Conditional_Operators.htm) 语句有一个提前退出机制。 考虑以下代码：
 
 ```gml
 if (mouse_check_button(mb_left) && mouse_x > 200 && global.canshoot == true)
@@ -200,11 +200,11 @@ if (mouse_check_button(mb_left) && mouse_x > 200 && global.canshoot == true)
 
 ### 不要计算每一步
 
-有时你可能有一个复杂的算法来寻路或者提供敌人的AI... 每一步都运行这个程序可能会让CPU无法保持 [游戏速度](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/General_Game_Control/game_set_speed.htm)。在这些情况下，设置 [计时器](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/alarm.htm) 可能很有用并且仅在计时器触发时执行代码。
+有时你可能有一个复杂的算法来寻路或者提供敌人的AI... 每一步都运行这个程序可能会让CPU无法保持 [游戏速度](/tool/manual.html?path=GameMaker_Language/GML_Reference/General_Game_Control/game_set_speed.htm)。在这些情况下，设置 [计时器](/tool/manual.html?path=GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/alarm.htm) 可能很有用并且仅在计时器触发时执行代码。
 
 ## 变量
 
-使用 [全局变量](https://manual-en.yoyogames.com/GameMaker_Language/GML_Overview/Variables/Global_Variables.htm) 是使所有实例都可以访问控制器变量的好方法。然而，应该注意的是，引用它们的脚本调用（尤其是在编译到YYC时）可能会因全局变量的多次查找而减慢速度。例如，考虑以下脚本：
+使用 [全局变量](/tool/manual.html?path=GameMaker_Language/GML_Overview/Variables/Global_Variables.htm) 是使所有实例都可以访问控制器变量的好方法。然而，应该注意的是，引用它们的脚本调用（尤其是在编译到YYC时）可能会因全局变量的多次查找而减慢速度。例如，考虑以下脚本：
 
 ```gml
 repeat(argument0)
@@ -216,7 +216,7 @@ repeat(argument0)
 }
 ```
 
-这里的问题是，重复循环的每次迭代都必须查找全局变量的值，这是非常缓慢的。为了避免这种情况，您应该始终将要像这样使用的任何全局变量分配给 [局部变量](https://manual-en.yoyogames.com/GameMaker_Language/GML_Overview/Variables/Local_Variables.htm). 因此，我们的代码示例将变为：
+这里的问题是，重复循环的每次迭代都必须查找全局变量的值，这是非常缓慢的。为了避免这种情况，您应该始终将要像这样使用的任何全局变量分配给 [局部变量](/tool/manual.html?path=GameMaker_Language/GML_Overview/Variables/Local_Variables.htm). 因此，我们的代码示例将变为：
 
 ```gml
 var _xx = global.px;
@@ -232,7 +232,7 @@ repeat(argument0)
 
 ### 局部变量
 
-如上所述，[局部变量](https://manual-en.yoyogames.com/GameMaker_Language/GML_Overview/Variables/Local_Variables.htm?rhsearch%3Dlocal%20variables%26rhhlterm%3Dlocal%20variables) 是在脚本或代码块中创建的 “局部 ”变量，其查找时间非常快。这意味着它们是存储代码中需要重复使用的函数调用值或操作的理想选择。例如，如果要绘制相对于视图中心的图形，只需计算一次该点，然后将其坐标存储到几个局部变量中，供以后使用：
+如上所述，[局部变量](/tool/manual.html?path=GameMaker_Language/GML_Overview/Variables/Local_Variables.htm?rhsearch%3Dlocal%20variables%26rhhlterm%3Dlocal%20variables) 是在脚本或代码块中创建的 “局部 ”变量，其查找时间非常快。这意味着它们是存储代码中需要重复使用的函数调用值或操作的理想选择。例如，如果要绘制相对于视图中心的图形，只需计算一次该点，然后将其坐标存储到几个局部变量中，供以后使用：
 
 
 ```gml
@@ -246,7 +246,7 @@ draw_text(_xx, _yy, dist);
 
 ### 数组
 
-对于 [数组](https://manual-en.yoyogames.com/GameMaker_Language/GML_Overview/Arrays.htm)，一个简单的优化技巧就是以相反的顺序初始化它们。这样，GameMaker 将为整个数组分配整块内存，而不是 “一点一点” 地分配。因此，举例来说，如果你只想将数组初始化为 0，你可以这样做，而不是循环：
+对于 [数组](/tool/manual.html?path=GameMaker_Language/GML_Overview/Arrays.htm)，一个简单的优化技巧就是以相反的顺序初始化它们。这样，GameMaker 将为整个数组分配整块内存，而不是 “一点一点” 地分配。因此，举例来说，如果你只想将数组初始化为 0，你可以这样做，而不是循环：
 
 ```gml
 myarray[99] = 0;
@@ -271,7 +271,7 @@ for(var i = 255; i > -1; --i;)
 
 ### 结构体
 
-另一项优化与 [结构体](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm) 有关。访问结构变量时，GameMaker 会根据变量名（字符串）计算出一个 [哈希](https://en.wikipedia.org/wiki/Hash_function)，这基本上就是变量在内存中位置的键。使用哈希值访问变量的速度很快，但计算哈希值本身的速度相对较慢，这就好比使用密钥：使用密钥很容易，创建密钥却很难，因此应避免不断创建新的密钥。当编译器检测到变量名是常量时，它会提前计算变量的哈希值，并用游戏可执行文件中 “硬编码” 的哈希值取代哈希计算值。这样，在游戏运行时，访问变量的哈希值就不需要计算了。例如：
+另一项优化与 [结构体](/tool/manual.html?path=GameMaker_Language/GML_Overview/Structs.htm) 有关。访问结构变量时，GameMaker 会根据变量名（字符串）计算出一个 [哈希](https://en.wikipedia.org/wiki/Hash_function)，这基本上就是变量在内存中位置的键。使用哈希值访问变量的速度很快，但计算哈希值本身的速度相对较慢，这就好比使用密钥：使用密钥很容易，创建密钥却很难，因此应避免不断创建新的密钥。当编译器检测到变量名是常量时，它会提前计算变量的哈希值，并用游戏可执行文件中 “硬编码” 的哈希值取代哈希计算值。这样，在游戏运行时，访问变量的哈希值就不需要计算了。例如：
 
 ```gml
 /// 创建事件
@@ -288,7 +288,7 @@ my_struct.a = x;  // 变量名 “a” 在整个游戏过程中都不会改变�
 // my_struct[$ "a"] = x;
 ```
 
-当变量名在编译时不是常量时，GameMaker 无法预先知道哈希值应该是多少（它取决于变量当时的值），因此需要重新计算哈希值。在这种情况下，您仍然可以通过使用 [variable_get_hash](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Variable_Functions/variable_get_hash.htm) 一次获取变量的哈希值，并使用 [struct_get_from_hash](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Variable_Functions/struct_get_from_hash.htm) 和 [struct_set_from_hash](https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Variable_Functions/struct_set_from_hash.htm) 获取和设置结构变量来优化自己的工作：
+当变量名在编译时不是常量时，GameMaker 无法预先知道哈希值应该是多少（它取决于变量当时的值），因此需要重新计算哈希值。在这种情况下，您仍然可以通过使用 [variable_get_hash](/tool/manual.html?path=GameMaker_Language/GML_Reference/Variable_Functions/variable_get_hash.htm) 一次获取变量的哈希值，并使用 [struct_get_from_hash](/tool/manual.html?path=GameMaker_Language/GML_Reference/Variable_Functions/struct_get_from_hash.htm) 和 [struct_set_from_hash](/tool/manual.html?path=GameMaker_Language/GML_Reference/Variable_Functions/struct_set_from_hash.htm) 获取和设置结构变量来优化自己的工作：
 
 
 ```gml

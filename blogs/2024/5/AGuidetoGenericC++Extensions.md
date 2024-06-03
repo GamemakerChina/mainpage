@@ -19,7 +19,7 @@ categories:
 - MacOS
 - iOS
 
-这个指南将向你展示如何在所有这些平台上轻松处理字符串、双精度数（这是GMS扩展常见的数据类型）以及如何使用[缓冲区](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Buffers/Buffers.htm)！这个指南假设你正在使用Windows操作系统和Visual Studio Community 2022（或者任何其他Visual Studio许可证）。强烈建议你按照指南的顺序进行操作（直到开始讨论针对特定平台编译的部分），这样你就能理解所有基本原理以及为什么某些事情以某些特定的方式进行。
+这个指南将向你展示如何在所有这些平台上轻松处理字符串、双精度数（这是GMS扩展常见的数据类型）以及如何使用[缓冲区](/tool/manual.html?path=GameMaker_Language/GML_Reference/Buffers/Buffers.htm)！这个指南假设你正在使用Windows操作系统和Visual Studio Community 2022（或者任何其他Visual Studio许可证）。强烈建议你按照指南的顺序进行操作（直到开始讨论针对特定平台编译的部分），这样你就能理解所有基本原理以及为什么某些事情以某些特定的方式进行。
 
 **注意：** 如果你有任何疑问或想提出建议，可以写评论，给我发论坛消息，或发邮件到[alejandroibrahimojea@gmail.com](mailto:alejandroibrahimojea@gmail.com)。
 
@@ -230,7 +230,7 @@ GMS2EXPORT double ext_test_Buffer(char* _GMSBuffPtrStr) {
 ### 创建一个非常好的并且文档良好的扩展
 
 这是一个建议，可以让你创建一个非常好的、用户友好的扩展，以便最终用户能够更好地使用它：不要让他们直接与GMS中的扩展函数交互。
-相反，将这些函数设置为“隐藏”，这样它们就不会显示为建议使用的函数，然后创建一个带有[JSDoc](https://manual.yoyogames.com/The_Asset_Editors/Code_Editor_Properties/JSDoc_Script_Comments.htm)文档的脚本。
+相反，将这些函数设置为“隐藏”，这样它们就不会显示为建议使用的函数，然后创建一个带有[JSDoc](/tool/manual.html?path=The_Asset_Editors/Code_Editor_Properties/JSDoc_Script_Comments.htm)文档的脚本。
 下面是一个带有所有先前创建的3个函数的文档准备好的脚本：
 
 ```gml
@@ -443,7 +443,7 @@ GMS（最新版本）仅支持x64 Windows可执行文件，因此创建与x64兼
 
 如果这是你收到的消息，你将在VS项目目录中的"out\build\x64-release\{YOURPROJECTNAME}"（以本示例为例，路径为C:\Users\aleja\Desktop\TEST\out\build\x64-release\TEST）中找到一组文件，其中包括一个.DLL文件。
 
-那个.DLL文件就是准备提供给GMS的库。前往GMS，在扩展中添加.DLL到代理文件中（[在这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你可以找到如何操作），在扩展的"Windows"平台中标记复选框以包含它，然后运行你的游戏。
+那个.DLL文件就是准备提供给GMS的库。前往GMS，在扩展中添加.DLL到代理文件中（[在这里](/tool/manual.html?path=index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你可以找到如何操作），在扩展的"Windows"平台中标记复选框以包含它，然后运行你的游戏。
 
 如果一切顺利，你现在应该能够从你的Windows GMS可执行文件中无问题地调用这三个函数。
 
@@ -494,7 +494,7 @@ GMS（其最新版本）只支持x64可执行文件，因此只有创建与x64�
 
 如果你收到了这条消息，你将在远程机器的“/home/{YOURUSERNAME}/.vs/{YOURPROJECTNAME}/out/build/linux-release/{YOURPROJECTNAME}”路径（例如，对于这个示例，路径是/home/alex/.vs/TEST/out/build/linux-release/TEST）找到一组文件，在其中你会找到一个 .SO 文件，你需要将其发送回你的Windows机器。
 
-那个 .SO 文件是已经准备好提供给GMS的库。前往GMS，在扩展中添加 .SO 到代理文件中（[在这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你会找到如何操作的说明），在扩展中勾选“Ubuntu”平台的复选框以便包含它，并执行你的游戏。
+那个 .SO 文件是已经准备好提供给GMS的库。前往GMS，在扩展中添加 .SO 到代理文件中（[在这里](/tool/manual.html?path=index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)你会找到如何操作的说明），在扩展中勾选“Ubuntu”平台的复选框以便包含它，并执行你的游戏。
 如果一切都顺利，你现在应该能够在Ubuntu的GMS可执行文件中无问题地调用这三个函数。
 恭喜，你的扩展现在应该能在Ubuntu上正常工作了！
 
@@ -772,7 +772,7 @@ VS目前存在一个bug。如果这是您首次为MacOS（或iOS）构建项目�
 
 如果这是您收到的消息，您将可以在远程机器上找到这些文件。转到您的用户名文件夹 > ".vs" > "YOURPROJECTNAME" > "out" > "build" > "macos-release" > "YOURPROJECTNAME"。在该路径中，您会找到一组文件，在其中，您将找到一个.dylib文件，您需要将其发送回您的Windows机器。
 
-那个.dylib文件就是准备提供给GMS的库文件。转到GMS，在扩展中添加.dylib文件作为代理文件（[这里](https://manual.yoyogames.com/index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)您将找到如何操作的方法），在扩展中标记"MacOS"平台的复选框以便包含它，并执行您的游戏。
+那个.dylib文件就是准备提供给GMS的库文件。转到GMS，在扩展中添加.dylib文件作为代理文件（[这里](/tool/manual.html?path=index.htm#t=The_Asset_Editors%2FExtension_Creation%2FCreating_An_Extension.htm)您将找到如何操作的方法），在扩展中标记"MacOS"平台的复选框以便包含它，并执行您的游戏。
 
 如果一切顺利，您现在应该能够从您的MacOS GMS可执行文件中无误地调用这三个测试函数。
 
