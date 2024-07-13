@@ -16,110 +16,390 @@ categories:
 **下载连接**：[Github](https://github.com/JujuAdams/Coroutines/releases)
 
 ## 常见问题解答
-### 协程可以在哪些平台上运行？
+### 协程在哪些平台上有效？
 
-理论上支持除了HTML5之外的一切。到目前为止，我只在Windows上进行了测试。整个扩展都是原生GML编写的，所以它应该可以开箱即用。您可能会在某个不经常测试的平台上遇到特殊的错误。如果你发现了他们，请[报告](https://github.com/JujuAdams/Coroutines/issues)给我们。
+除了HTML5之外的所有平台。我目前只在Windows上进行了测试。由于它是纯原生GML，所以应该可以直接使用。在我不经常测试的平台上，你可能会遇到一些边缘情况；如果你发现任何bug，请[报告](https://github.com/JujuAdams/Coroutines/issues)。
 
-### 此代码库的许可证是什么？我可以将其用于商业项目吗？
+### 这个代码库的许可证是什么？我可以将它用于商业项目吗？
 
-该库在[MIT许可](https://github.com/JujuAdams/Coroutines/blob/master/LICENSE)下发布。这意味着您可以将其用于任何您想要的目的，包括商业项目。你可以把我的名字放在你的感谢列表（Juju Adams）并且说谢谢，这对我来说意义重大，但你没有义务这样做。
+[这个库是基于MIT许可证发布的](https://github.com/JujuAdams/Coroutines/blob/master/LICENSE)。这意味着你可以将它用于任何目的，包括商业项目。如果你能在你的游戏中提到我的名字（Juju Adams）和/或表示感谢，那对我来说意义重大，但你没有义务这么做。
 
-### 我认为您缺少一个有用的功能，我希望您实现它！
+### 我认为你缺少了一个有用的功能，希望你能实现它！
 
-很好！请提出[Issues](https://github.com/JujuAdams/Coroutines/issues)。Issues使协程的使用更有趣。而且这可以让我在公共交通上感到无聊时思考一些事情。
+太好了！请提交一个[功能请求](https://github.com/JujuAdams/Coroutines/issues)。功能请求使协程更加有趣，也给了我在公共交通上无聊时的思考素材。
 
-### 我发现了一个错误，解决问题的最佳方法是什么？
+### 我发现了一个bug，它既让我害怕又略微烦恼。解决这个问题的最佳方法是什么？
 
-请提出[Issues](https://github.com/JujuAdams/Coroutines/issues)。Juju 每天都会检查 GitHub，错误修复通常会在几天后发布。你也可以去[Discord服务器](https://discord.gg/8krYCqr)上找我，但这并不能替代一个很好的清晰的错误报告。
+请提交一个[bug报告](https://github.com/JujuAdams/Coroutines/issues)。Juju每天都会检查GitHub，通常几天后就会发布bug修复。你也可以在[Discord服务器](https://discord.gg/8krYCqr)上找到我，但这不能代替清晰的bug报告。
 
-### 帮我！我收到有关异步事件的编译错误。
-由于 GMS2.3.6 更改了一些与异步事件相关的常量名称，低于 v2.3.6 的 GameMaker 版本将不可以编译此库。您可以通过在 GM 的文档中找到旧名称并将其插入自己的项目来解决此问题。
+### 救命！我在编译时遇到了关于异步事件的错误。
 
-### 协程是否适用于[GMLive](https://yellowafterlife.itch.io/gamemaker-live)？
-我不知道。
+由于GMS2.3.6更改了一些与异步事件相关的常量名称，GameMaker v2.3.6之前的版本将无法编译此库。你可以通过查找GM文档中的旧名称并替换它们来自己解决这个问题。
 
-### 说到GMLive，其作者还通过GMEdit实现了协程。这个库有什么不同？
-Vadim早在GameMaker Studio 2.3将匿名函数引入GML之前就编写了他的协程实现。这是一个非常聪明的技术解决方案，可以解决旧版GM中许多缺失的功能。 幸运的是，GameMaker现在更加灵活，这个库主要利用了新功能来实现协程。
+### 协程与[GMLive](https://yellowafterlife.itch.io/gamemaker-live)兼容吗？
 
-### 谁写的代码？
-这个库是由[@jujuadams](https://twitter.com/jujuadams)经过长时间修补GameMaker而建立和维护的。Juju参与了很多[商业GameMaker游戏](http://www.jujuadams.com/)。
+我还没有测试过。请让我知道你的发现。
 
-### 我可以给你捐款吗？
-谢谢你想表达你的感激之情，这对我个人来说确实意义重大——但我很幸运的能从Gamedev中获得稳定的收入。如果你想支持我的工作，请在你的游戏里给我一个名字就够了。
+### 说到[YellowAfterlife](https://yellowafterlife.itch.io/)，他也通过GMEdit[实现了协程](https://github.com/YellowAfterlife/GMEdit/wiki/Using-%23gmcr-magic)。这个库有何不同？
+
+Vadim在GameMaker Studio 2.3引入匿名函数之前就实现了他的协程。它是一个非常聪明的技术解决方案，解决了旧版本GM中许多缺失的功能。幸运的是，现在GameMaker更加灵活，这个库充分利用了新功能来实现协程。
+
+### 谁编写了代码？
+
+这个库是由[@jujuadams](https://twitter.com/jujuadams)构建和维护的，他长期以来一直在研究GameMaker的内部机制。Juju参与了许多[商业GameMaker游戏](http://www.jujuadams.com/)的开发。
+
+许多宏的想法基于[Katsaii](https://nuxiigit.github.io/)在她著名（臭名昭著？）的[宏黑客文章](https://nuxiigit.github.io/content/blog/post/gml+syntax+extensions.html)中提出的想法。[shdwcat](https://github.com/shdwcat)也在库的公共发布前提供了一些建议，帮助指导了库的发展方向，她从编写自己的协程系统中学到了一些东西。
+
+### 我可以向你捐款吗？你会开始一个Patreon吗？
+
+感谢你愿意表示感谢——这对我个人来说意义重大——但我很幸运能从游戏开发中获得稳定的收入。我目前没有打算作为创作者加入Patreon。如果你想支持我的工作，可以在你的游戏中提到我，和/或在你选择的社交媒体平台上给我一个喊话。
 
 ## 协程简介
-当你写代码并运行你的游戏时，你写的代码是按顺序执行的，一个命令在前一个命令完成后立即执行。我们将代码存储在函数中，目的是让程序从一个函数进入下一个函数，使游戏运行。当程序进入一个函数时，它必须完成整个函数（或至少到 `return` 命令为止），然后程序才能退出函数并运行其他代码。这被称为“同步执行”，这就是GameMaker的工作方式——代码是同步运行的，一行接一行，每帧数千行代码分布在数百个函数中。
+*本节是一个关于协程如何帮助你制作游戏的高级描述。如果你想了解更技术性的描述，请参见 [[协程是如何执行的？]] 和 [[我们如何扩展GML？]]*
 
-异步函数的操作方式则不同。异步函数**不需要**完全完成所有的代码，程序就可以离开该函数，做其他事情，关键是，异步函数可以从他们离开的地方恢复，从他们暂停的地方恢复执行。这意味着你可以写一些代码在它的中间，以允许总体程序去做其他事情，并在稍后返回到该函数。
+当你编写代码并运行你的游戏时，你编写的代码是按顺序执行的，每个命令在前一个命令完成后立即执行。我们将代码存储在函数中，意图是程序将从一个函数移动到下一个函数，使游戏工作。当程序进入一个函数时，它必须完成整个函数（或至少到达一个 `return` 命令）后才能退出该函数并运行其他代码。这被称为“同步执行”，这是GameMaker的工作方式——代码是同步运行的，一行接一行，每帧数千行代码分布在数百个函数中。
 
-这个库允许你在GameMaker中编写可暂停的函数。这些可暂停的函数被称为 "coroutines"：一个代码块，可以在执行过程中暂停，稍后再继续。
+异步函数的操作方式不同。异步函数**不需要**在程序离开该函数并做其他事情之前完全完成所有代码，更重要的是，异步函数可以从暂停的地方继续执行。这意味着你可以编写一些代码，在执行过程中允许整个程序去做其他事情，然后稍后再回到该函数继续执行。
 
-许多语言原生支持编写异步代码，要么是作为核心语言功能，要么是实现异步执行的库。GML则是后者。因此，我们有必要开发自己的系统，以模拟那些支持异步函数的语言的特征和行为。从纯函数中构建corountines是笨拙的，难以遵循的，所以这个库扩展了GML的语法，这样我们就可以用更优雅的方式来描述coroutines。
-### 案例
-让我们看一个简单的例子：过场动画。
+此库允许你在GameMaker中编写可暂停的函数。这些可暂停的函数称为“协程”：一段可以在执行过程中暂停并在稍后继续的代码块。
 
-场景动画是一场噩梦，多年来人们花了很多精力为场景问题设计和建立不同的解决方案。最常见的解决方案是使用一个大的switch...case语句来控制什么实例做什么，什么时候做。构建这些系统是非常耗时的，而且它们最后总是很难看，不实用。在现实中，我们想要的切入函数是一个异步函数——一个可暂停的函数，它可以向游戏传递指令，使物体产生动画并显示文本，而该函数不会阻止游戏的其余部分运行。
+许多语言原生支持编写异步代码，无论是作为核心语言特性，还是作为支持异步执行的库。GML属于后者。因此，有必要开发我们自己的系统来模拟支持异步函数的语言的特性和行为。从纯函数构建协程是笨拙且难以理解的，因此此库[扩展了GML的语法](Coroutines/wiki/Coroutine-Syntax)，以便我们能够以更优雅的方式描述协程。
 
-下面是一个场景动画的例子。我们将在后面详细介绍正在发生的事情，但这应该能让你体会到用协程可以实现什么样的事情。
+### 一个示例
 
-```gml
+让我们来看一个简单的例子：过场动画。
+
+制作过场动画是一场噩梦，多年来人们花费了大量精力设计和构建不同的解决方案来解决过场动画问题。最常见的解决方案是使用一个大的 switch...case 语句来控制哪个实例在什么时候做什么。构建这些系统非常耗时，而且它们总是最终变得丑陋且难以管理。实际上，我们想要的过场动画函数是一个异步函数——一个可暂停的函数，它可以向游戏传递指令以动画化对象和显示文本，而不会阻止游戏的其余部分运行。
+
+这里是一个过场动画的示例。稍后我们会详细解释发生了什么，但这应该会让你了解使用协程可以实现的功能：
+
+```
 function CutsceneFindMyFroggy()
 {
 	return CO_BEGIN
-		//阻止玩家使用正常的控制手段进行移动
+		// 防止玩家使用正常的控制移动
 		oPlayer.inCutscene = true;
 		
-		//让玩家走进房间
+		// 让玩家走进房间
 		WHILE (oPlayer.x != 55) THEN
 			oPlayer.x = min(oPlayer.x + 2, 55);
 			YIELD THEN
 		END
 		
-		//显示一些对话
-		oTextbox.text = "我的青蛙在哪里?";
+		// 显示一些对话
+		oTextbox.text = "我的青蛙在哪里？";
 		oTextbox.expression = sPlayerSad;
 		AWAIT keyboard_check_pressed(vk_space) THEN
 		
 		oTextbox.text = "...";
 		
-		//为达到喜剧效果而短暂停顿片刻
-		DELAY 350 THEN //毫秒
+		// 为了喜剧效果暂停片刻
+		DELAY 350 THEN // 毫秒
 		
-		oTextbox.text = "Ribbit!";
+		oTextbox.text = "呱呱！";
 		oTextbox.expression = sFrog;
 		audio_play_sound(sndLonelyRibbit, 1, false);
 		
-		//让青蛙跳到玩家的怀里
+		// 让青蛙跳进玩家的怀里
 		WHILE (oFrog.x != 55) THEN
 			oFrog.x = max(oFrog.x - 2, 55);
 			YIELD THEN
 		END
 		
-		oTextbox.text = "啊，她来了！我美丽的两栖动物?";
+		oTextbox.text = "啊，她在这儿！谁是我的美丽两栖动物？";
 		oTextbox.expression = sPlayerHappy;
 		AWAIT keyboard_check_pressed(vk_space) THEN
 		
-		oTextbox.text = "Ribbit! :)";
+		oTextbox.text = "呱呱！ :)";
 		oTextbox.expression = sFrog;
 		audio_play_sound(sndHappyRibbit, 1, false);
 		AWAIT keyboard_check_pressed(vk_space) THEN
 		
-		//清空文本框，然后释放玩家
+		// 清空文本框然后释放玩家
 		oTextbox.text = "";
 		player.inCutscene = false;
 	CO_END
 }
 ```
-这种语法与普通的GML有些不同。特别值得注意的是，它使用了新的流程控制关键字。毫无疑问，`WHILE`你已经见过了（尽管是小写的`while`循环命令），而许多其他的命令是新的或不熟悉的。
 
-`CO_BEGIN`和`CO_END`定义了循环程序的开始和结束点。这两个标记之间的一切都构成了协程的代码。普通的GML可以在整个协程中使用，比如修改其他实例中的变量，但是为了实现协程的特定行为，必须使用特殊的协程语法。`THEN`和`END`是结构性命令，在使用上类似于打开`{`和关闭`}`的大括号。
+这种语法与普通的GML有些不同。特别值得注意的是使用了一些新的流程控制关键字。你可能以前见过 `WHILE`（虽然是小写的 `while` 循环命令），但很多其他全大写的命令是新的或不熟悉的。
 
-`AWAIT`和`DELAY`是为了方便而提供的命令。`AWAIT`将暂停该行代码的循环程序，直到条件返回`true`。在上面的例子中，我们在等待用户按下空格键，然后再推进到后面的指令。`DELAY`将等待一定的时间后再继续进行（以毫秒为单位）。
+`CO_BEGIN` 和 `CO_END` 定义了协程的起点和终点。这两个标记之间的所有内容构成了协程的代码。在整个协程中可以使用普通的GML，例如修改其他实例中的变量，但为了启用协程特定的行为，必须使用特殊的协程语法。`THEN` 和 `END` 是结构命令，它们的用法类似于打开 `{` 和关闭 `}` 大括号。
 
-最后，我们有一个不寻常的命令`YIELD`。这个功能是循环程序的核心。当一个协程碰到`YIELD`命令时，它会立即跳出协程，允许你的游戏执行其他指令。在下一步中，该程序将从`YIELD`命令中恢复，继续执行代码。
+`AWAIT` 和 `DELAY` 是为方便提供的命令。`AWAIT` 会在那行代码暂停协程，直到条件返回 `true`。在上面的示例中，我们正在等待用户按下空格键，然后再将过场动画推进到后续指令。`DELAY` 会等待一段时间（以毫秒为单位）再继续。
 
-让剪辑变得更容易处理只是一个开始：协程可用于UI动画、复杂的网络协议、REST API和OAuth流程、多阶段视觉效果、异步保存/加载（控制台开发需要），还有更多。它们是非常有用的，现在它们在GameMaker中出现了。
+最后，我们有一个不寻常的命令 `YIELD`。这个函数是协程的核心。当协程遇到 `YIELD` 命令时，它会立即跳出协程并允许你的游戏执行其他指令。在下一步中，协程将从 `YIELD` 命令处继续执行代码。
 
+简化过场动画处理只是一个开始：协程还可以用于UI动画、复杂的网络协议、REST API和OAuth流程、多阶段视觉效果、异步保存/加载（主机开发所需）等。它们非常有用，现在它们已经在GameMaker中实现了。
+
+## 协程是如何执行的？
+*本文档解释了协程执行的基本原理，以及如何使用函数调用生成协程。如果你想了解GML语法扩展的内部工作原理，请参见[我们如何扩展GML]*
+
+### 执行
+
+此库中的协程执行围绕“协程根结构”进行，这是一个数据容器，既管理协程的执行又存储协程状态（协程执行时读写的变量）。每当你为协程编写代码时，它会自动作用于协程的范围内。这意味着你可以编写代码而不必担心是否意外访问了其他地方的数据——从某种意义上说，协程中的每个变量都是局部的。根结构也是执行[协程方法](https://github.com/JujuAdams/Coroutines/wiki/Coroutine-Methods)的目标范围。
+
+当创建一个协程时，它会在每帧处理的全局协程列表中注册。因此，协程会自动执行，无需额外的代码来运行它们。当然，你可以在任何时候使用相关方法[取消](https://github.com/JujuAdams/Coroutines/wiki/Coroutine-Methods#cancel)或[暂停](https://github.com/JujuAdams/Coroutines/wiki/Coroutine-Methods#pausereturnvalue)协程。当一个协程[完成](https://github.com/JujuAdams/Coroutines/wiki/Coroutines/wiki/Coroutine-Methods#getcomplete)时，它会从全局列表中移除，这意味着分配给它的内存将被垃圾回收，前提是你的代码没有引用它。
+
+如上所述，协程每帧自动执行。不幸的是，GameMaker没有使这变得容易，我们实际上需要在某个实例的Step事件中挂钩，以便协程能够执行。这就是[`CoroutineEventHook()`](https://github.com/JujuAdams/Coroutines/blob/main/scripts/CoroutineEventHook/CoroutineEventHook.gml)函数的目的。请注意，此函数还包含处理异步事件的代码——同样的问题，我们需要一个实例来执行事件钩子函数，以便协程接收到任何异步事件。
+
+### 生成
+
+当定义一个协程时，根结构会被赋予一系列需要执行的指令。指令可以简单地是“运行这段GML代码”，也可以是流程控制（循环和分支），或者是需要根结构等待进一步输入的行为。指令通过函数调用添加到根结构中，如下所示：
+
+```javascript
+__CoroutineFunction(function() // 指令1
+{
+    i = 0;
+});
+
+__CoroutineWhile(function() // 指令2
+{
+    return (i < 6);
+});
+
+__CoroutineFunction(function() // 指令3
+{
+    show_debug_message("六条消息！");
+    show_debug_message("(i=" + string(i) + ")");
+});
+
+__CoroutineYield(function() // 指令4
+{
+    return i;
+});
+
+__CoroutineEndLoop(); // 指令5
+
+__CoroutineFunction(function() // 指令6
+{
+    show_debug_message("完成！");
+});
+```
+
+我们称一系列添加指令到协程的函数调用为“生成器函数”。注意协程生成器函数需要一个步骤来启动while循环`__CoroutineWhile()`，并需要另一个指令来结束循环`__CoroutineEndLoop()`。这个生成器函数等价于以下标准的GML代码：
+
+```javascript
+var i = 0;
+while (i < 6)
+{
+    show_debug_message("六条消息！");
+    show_debug_message("(i=" + string(i) + ")");
+    //YIELD...THEN没有等价物！
+}
+show_debug_message("完成！");
+```
+
+通过比较生成器函数和它的标准GML等价代码，很明显标准GML更简洁！我们通过扩展GML中的语法解决了这个问题——有关更多信息，请参见[我们如何扩展GML]。
+
+无论如何，协程是通过这些生成器函数调用构建的。这些函数所做的只是将数据推入一个指令数组，或更改将数据推入哪个指令数组。我们首先将数据写入协程的根结构，但当进入while循环时，我们开始将数据推入while循环中。在结束while循环后，我们返回将指令推入根结构的数组。
+
+我们可以通过将其写成嵌套数组来进行可视化（为简单起见，我在这里简化了函数调用）：
+
+```
+根 : [
+    i = 0,                        指令1
+    while (i < 6) : [             指令2
+        "六条消息！",              指令3
+        "(i=" + string(i) + ")",
+        YIELD i,                  指令4
+    ],                            指令5
+    "完成!"                       指令6
+]
+```
+
+通过将指令分解为这些嵌套数组，我们可以将我们的协程解释为一个遍历其指令数组直到执行完所有指令的机器。数组中的每个指令本身都是一个机器。无论那个内部机器需要做什么，它必须完成其任务，然后外部机器才能继续遍历其指令数组。考虑到根结构在完成其指令时会完全停止，但while循环可能执行其循环数百次，因此显然存在多种类型的机器。
+
+这些机器并不真实，毕竟它们是[虚拟机](https://en.wikipedia.org/wiki/Virtual_machine)，这是你可能听说过的一个术语。这里描述的是一种非常简单的VM，但它仍然是一个VM。
+
+实际上，每个[命令]都有一个对应的机器。如果你感兴趣，可以通过查看库代码中的`System`文件夹来探究控制每种机器的代码。要使用这个库，理解所有细节并不是必需的，但我认为这仍然很有趣。
+
+协程的主要特征（不仅仅是这个库）是它们可以暂停和恢复执行。回到我们的机器比喻，每台机器都有记忆：1）是否已完成，如果没有，2）协程暂停前它在做什么。这比听起来要简单。每个协程都有一个根结构，包含所有变量，因此它会保留，而每个机器可以存储其自己的状态跟踪变量。例如，我们示例中的while循环有一个变量跟踪它在指令数组中的位置。当协程恢复时，整个协程会找到哪个内部机器仍有工作要做，并使用该机器的状态变量恢复执行。
+
+这解释了指令如何组织和执行，但具体的代码行呢？通常，对于虚拟机，每一行代码都会被处理。这实际上就是[GameMaker的虚拟机工作方式](https://www.reddit.com/r/gamemaker/comments/9g9v2a/any_documentation_gml_bytecode_and_assembly/)，每一行代码都会被分解成一系列指令。这个库并没有做这么多的工作，因为我们可以让GameMaker为我们完成！我们可以利用GMS2.3的匿名函数特性（`function() {}`）来准备任意代码，以便在协程需要时执行。
+
+## 我们如何扩展GML？
+
+乍一看，向GML添加新语言特性似乎像是魔法。在编写库或者任何可互换代码时，我们通常优先考虑通过函数与系统交互。一些库鼓励你直接编辑变量，其他则使用着色器或表面来实现所需效果，许多库使用宏和枚举来表示该库特有的常量。
+
+宏非常强大。宏实际上会直接将其值插入到代码中。通常，我们会将宏设置为一个字符串或数字，偶尔会将宏用作我们希望在多个地方使用的表达式。例如：
+
+```
+#macro ON_DIRECTX  ((os_type == os_windows) or (os_type == os_xboxone) or (os_type == os_xboxseriesxs) or (os_type == os_uwp))
+```
+
+然后，我们可以在代码库的其他地方使用`ON_DIRECTX`，根据游戏是否在DirectX平台上运行来执行不同的行为（这对于修复UV坐标的问题非常有用）。在这里，宏被用作封闭表达式——它是完全自包含的，可以在需要的地方插入而无需进一步考虑。
+
+这个库使用了许多宏，但大多数这些宏**不是**自包含的。库中的宏会将**不完整**的表达式插入到代码中。为了生成有效的、完整的表达式，这些宏必须一起使用。乍一看这似乎是个问题，但它允许我们创建一种可以表达复杂结构的语法。
+
+让我们来看看`CO_BEGIN`和`CO_END`是如何工作的。这两个宏在概念上是最复杂的，但理解它们的工作原理可以解释其他自定义语法宏如何配合在一起。
+
+```javascript
+#macro CO_BEGIN  ((function(){__CoroutineBegin(function(){
+#macro CO_END    });return __CoroutineEnd();})());
+```
+
+这是非常复杂的代码，使用了很多嵌套，难以阅读，所以让我们在上下文中使用它来使事情变得更容易理解。
+
+```javascript
+function Example()
+{
+    return CO_BEGIN
+        show_debug_message("What an incredible function.");
+    CO_END
+}
+```
+
+这段代码展开为：
+
+```javascript
+function Example()
+{
+    // CO_BEGIN
+    return ((function(){__CoroutineBegin(function(){
+    
+    //我们在协程中放置的单行代码
+    show_debug_message("What an incredible function.");
+    
+    //CO_END
+    });return __CoroutineEnd();})());
+}
+```
+
+你可以看到，我们使用宏在协程的内容周围插入合法的GML。让我们进一步拆解实际进行的操作。我将重写一些内容，以便更容易看出生成函数如何返回新的协程根结构体。
+
+```javascript
+function Example()
+{
+    var _generatorFunction = function()
+    {
+        //将一些代码添加到全局协程根结构体 (global.__coroutineNext) 中执行
+        //在启动时创建一个全局空协程根结构体，并始终可用
+        //在这个生成函数的末尾生成一个新的结构体，以便在下一个协程中使用
+        __CoroutineBegin(function()
+        {
+            show_debug_message("What an incredible function.");
+        });
+        
+        //返回我们刚刚添加代码的协程结构体
+        return __CoroutineEnd();
+    };
+    
+    //运行生成函数并返回其值（协程根结构体）
+    return _generatorFunction();
+}
+```
+
+这样，通过宏扩展，我们可以在GML中定义和使用协程。
+
+### 宏的强大功能
+
+使用宏的确可以做很多事情。仅通过两个简单的语句 `CO_BEGIN` 和 `CO_END`，我们就能在一个函数内部展开整个协程的功能！你会注意到，`CO_BEGIN` 以 `__CoroutineFunction(function() {` 结尾，而 `CO_END` 以 `});` 开始。这使得这两个宏能够用于将代码封装在一个函数内部。这是这个库中宏的一个重复模式：一个宏要么是开启一个新函数，要么是关闭一个函数。
+
+让我们通过引入另外三个宏来使我们的示例更加复杂。
+
+```javascript
+#macro REPEAT  });__CoroutineRepeat(function(){return 
+#macro THEN    });__CoroutineThen(function(){
+#macro END     });__CoroutineEndLoop(function(){
+```
+
+接下来是协程本身的示例：
+
+***请注意***，在这里使用 `REPEAT 5 THEN ... END` 是完全不必要的，`repeat(5) {}` 就足够了。`REPEAT`（以及 `WHILE` / `IF` / `FOREACH`）只有在循环中包含 `YIELD` 命令时才**是必需的**。我们在这里使用协程版本的循环仅作为示例。
+
+```javascript
+function Example()
+{
+    return CO_BEGIN
+        show_debug_message("What an incredible function.");
+        REPEAT 5 THEN
+            show_debug_message("Wow!");
+        END
+    CO_END
+}
+```
+
+这段代码展开为以下的生成函数：
+
+```javascript
+function Example()
+{
+    // CO_BEGIN
+    var _generatorFunction = function()
+    {
+        __CoroutineBegin(function()
+        {
+            // 第一行代码
+            show_debug_message("What an incredible function.");
+        
+            // REPEAT
+        });
+        __CoroutineRepeat(function()
+        {
+            return 5; // 5 来自 REPEAT 和 THEN 之间的数字
+        
+            // THEN
+        });
+        __CoroutineThen(function()
+        {
+            // 第二行代码
+            show_debug_message("Wow!");
+        
+            // END
+        });
+        __CoroutineEndLoop(function()
+        {
+        
+            // CO_END
+        });
+        
+        // 返回我们刚刚添加代码的协程结构体
+        return __CoroutineEnd();
+    };
+    
+    // 运行生成函数并返回其值（协程根结构体）
+    return _generatorFunction();
+}
+```
+
+注意最后一个函数是空的。这个宏系统的一个特性就是这种情况很常见！
+
+现在，应该可以清楚地看到这些宏如何作为不完整的表达式链接在一起以生成有效的GML。实际上，这些宏并没有做比其他库中的函数调用更多的事情。它们的强大之处在于如何隐藏功能组件的细节，从而使编写代码时不被屏幕上的函数调用混淆。
+
+### 宏示例总结
+
+宏的使用实际上是为了隐藏复杂的函数调用，使得代码更加简洁。下面是宏展开的代码：
+
+```javascript
+function Example()
+{
+    // CO_BEGIN
+    var _generatorFunction = function()
+    {
+        __CoroutineBegin(function()
+        {
+            show_debug_message("What an incredible function.");
+        });
+        __CoroutineRepeat(function()
+        {
+            return 5; // 5 是 REPEAT 和 THEN 之间的数字
+        });
+        __CoroutineThen(function()
+        {
+            show_debug_message("Wow!");
+        });
+        __CoroutineEndLoop(function()
+        {
+        });
+        return __CoroutineEnd();
+    };
+    
+    return _generatorFunction();
+}
+```
+
+通过宏，我们可以在GML中实现复杂的协程行为，而不必显式地处理大量的底层函数调用和管理代码。宏的设计使得复杂的功能变得易于使用，帮助开发者集中精力在实际的逻辑和功能实现上。
 ## 配置
 `__CoroutinesConfig()`是一个包含少量宏的脚本，可以用来定制协程库的全局行为。如果你想改变库的默认行为，你应该编辑这些宏。
 
@@ -133,7 +413,7 @@ function CutsceneFindMyFroggy()
 2. 将此宏设置为 `false`
 
 此外，运行时语法检查在创建一个协程程序时有一点小的性能损失。如果你觉得你需要更多的速度，你可能想把这个宏设置为"false"来回收一点CPU时间。
-
+&nbsp;
 
 ### `COROUTINES_DELAY_REALTIME`
 
@@ -141,7 +421,7 @@ function CutsceneFindMyFroggy()
 
 将此宏设置为`true`，以测量`DELAY`命令的持续时间，单位为毫秒。如果你需要每一帧的准确性，那么将这个宏设置为`false`。
 
-
+&nbsp;
 
 ### `COROUTINES_DEFAULT_CANCEL_WHEN_ORPHANED`
 
@@ -151,7 +431,7 @@ function CutsceneFindMyFroggy()
 
 **注意：** 一个停用的实例算作一个不存在的实例。
 
-
+&nbsp;
 
 ### `COROUTINES_DEFAULT_CREATOR_WEAK_REFERENCE`
 
@@ -159,7 +439,7 @@ function CutsceneFindMyFroggy()
 
 这个宏与上面那个宏有关。如果你在一个结构的范围内创建一个coroutine，coroutine需要保持对该结构的引用，以便`.GetCreator()`方法能够返回一个值。如果你期望（或打算）该结构在某一时刻被垃圾回收，这将导致一个问题，因为如果coroutine持有一个强引用，coroutine将保持该结构的活力。将此宏设置为"true "将默认每个结构的引用为弱引用，以避免这一问题。可以使用`.WeakReference()`方法来进一步调整单个coroutine持有的引用类型。
 
-
+&nbsp;
 
 ### `COROUTINES_GAMEMAKER_BROADCASTS_TRIGGER_NATIVE`
 
@@ -177,7 +457,7 @@ Coroutines有它自己的本地广播系统。广播可以用`CoroutineBroadcast
 
 #### `CO_BEGIN` 和 `CO_END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("This is an example coroutine.");
 CO_END
@@ -187,7 +467,7 @@ CO_END
 
 创建一个程序将自动把它添加到一个全局的程序列表中，以便每一帧都被执行。一旦该程序完成，它将被从全局执行中移除，并可用于内存回收。当然，如果你在该程序完成后还保持着对该程序的引用，那么在你持有的引用也被丢弃之前，它将不会被垃圾回收。
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("This is an example parent coroutine.");
     
@@ -201,11 +481,11 @@ Coroutine定义可以相互嵌套，因此一个coroutine父级可以创建额�
 
 子程序不会阻止父程序的执行——如果你想让子程序阻止其父程序的执行，请使用`RACE`或`SYNC`命令（或者使用`AWAIT`创建你自己的功能）。
 
-
+&nbsp;
 
 #### `THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("This will");
     THEN
@@ -217,7 +497,7 @@ coroutineRootStruct = CO_BEGIN
 CO_END
 ```
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     REPEAT 5 THEN
         show_debug_message("Five messages!");
@@ -227,11 +507,11 @@ CO_END
 
 `THEN`本身没有特别的意义，如果在没有上下文的情况下使用，只是将代码块附加到前面的代码块的末尾。然而，`THEN`在许多地方是必需的语法，应该按照这些命令的指示来使用。
 
-
+&nbsp;
 
 #### `CO_PARAMS.<variable>`
 
-```gml
+```cpp
 function ShowPopUpMessageTwice(_message)
 {
     CO_PARAMS.message = _message;
@@ -246,11 +526,11 @@ function ShowPopUpMessageTwice(_message)
 
 `CO_PARAMS`允许你在定义程序之前在程序中设置变量。如果你的coroutine位于一个启动新coroutine的函数内，这对传递参数很有帮助。
 
-
+&nbsp;
 
 #### `CO_ON_COMPLETE`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     list = ds_list_create();
 CO_ON_COMPLETE
@@ -262,13 +542,13 @@ CO_END
 
 **请注意**，`CO_ON_COMPLETE`代码的内容必须是简单的GML。这意味着你不能在代码块内使用coroutine命令。
 
-
+&nbsp;
 
 #### `CO_SCOPE = <struct/instance>`
 
 **这是为方便而提供的高级功能，在使用时不应不加注意。**
 
-```gml
+```cpp
 ////Create Event of an object
 //Set the scope of the next coroutine to ourselves (CO_SCOPE is reset by CO_END)
 CO_SCOPE = self;
@@ -298,11 +578,11 @@ draw_self();
 
 **请注意**，通过使用`CO_SCOPE`，很容易产生冲突，即两个coroutine争相为一个实例设置相同的值。这可能会导致令人不快和棘手的bug的修复。**使用该功能的风险由你自己承担**。
 
-
+&nbsp;
 
 #### `CO_LOCAL.<variable>`
 
-```gml
+```cpp
 CO_PARAMS.cells_to_travel = 10;
 CO_SCOPE = self;
 CO_BEGIN
@@ -323,15 +603,15 @@ CO_END
 
 `CO_LOCAL`包含一个对当前正在处理的循环程序的引用。默认情况下，`CO_LOCAL`将是coroutine代码块内部的`self`作用域。如果你使用`CO_SCOPE`（见上文），情况就会改变，因为现在的coroutine代码块是在其他实例/结构的范围内运行。为了能够引用由coroutine根结构持有的沙盒变量，需要`CO_LOCAL`。
 
+&nbsp;
 
-
-
+&nbsp;
 
 ### 返回值
 
 #### `YIELD <expression> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("This will");
     YIELD THEN
@@ -343,7 +623,7 @@ coroutineRootStruct = CO_BEGIN
 CO_END
 ```
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     i = 1;
     REPEAT 5 THEN
@@ -358,9 +638,11 @@ CO_END
 
 **请注意**，`YIELD`命令后面必须有`THEN`命令。如果你忘记了`THEN`命令，那么代码将神秘地不能运行，并且会出现"跳过"。
 
+&nbsp;
+
 #### `PAUSE <expression> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("Look left");
     PAUSE "left" THEN
@@ -375,11 +657,11 @@ CO_END
 
 **请注意**，`PAUSE`命令后面必须有`THEN`命令。如果你忘记了`THEN`命令，那么代码将神秘地不能运行，并出现"跳过"。
 
-
+&nbsp;
 
 #### `RETURN <expression>`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     IF oPlayer.x > 55 THEN
         RETURN "Too far right"
@@ -395,11 +677,11 @@ CO_END
 
 **请注意**，`RETURN`命令后面不需要有`THEN`命令。任何写在`RETURN`命令后面的东西当然不会被执行，就像GML的本地`return`命令。
 
-
+&nbsp;
 
 #### `RESTART`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     CreateSmokeParticle(oChimney.x, oChimney.y);
     DELAY random_range(300, 350) THEN
@@ -413,15 +695,15 @@ CO_END
 
 **请注意**，`RESTART`命令后面不需要有`THEN`命令。任何写在`RESTART`命令后面的东西都不会被执行，就像GML的本地`return`命令。
 
+&nbsp;
 
-
-
+&nbsp;
 
 ### 循环
 
 #### `END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     REPEAT 5 THEN
         show_debug_message("Five messages!");
@@ -431,11 +713,11 @@ CO_END
 
 它本身没有任何作用。然而，`END`对于终止`REPEAT`、`WHILE`或`FOREACH`循环是必要的。它也应该被用来终止`RACE`或`SYNC`块。在其他情况下，不能使用它。
 
-
+&nbsp;
 
 #### `REPEAT <expression> THEN <function> END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     REPEAT 5 THEN
         show_debug_message("Five messages!");
@@ -445,11 +727,11 @@ CO_END
 
 类似于GameMaker自己的`repeat()`循环。没有必要在**所有的情况**下使用这个宏来取代标准的`repeat()`循环。只有当`repeat()`循环包含一个coroutine命令时，才**需要**使用`REPEAT...END`循环。
 
-
+&nbsp;
 
 #### `WHILE <condition> THEN <function> END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     fireball = instance_create_depth(oPlayer.x, oPlayer.y, 0, oFireball);
     
@@ -468,7 +750,7 @@ CO_END
 
 `WHILE`类似于GameMaker自己的`while()`循环。没有必要在**所有的情况**下使用这个宏来取代标准的`while()`循环。只有当`while()`循环包含一个coroutine命令时，才**需要**使用`WHILE...END`循环。
 
-
+&nbsp;
 
 #### `FOREACH <iteratorVariable> IN <iterableData> THEN <function> END`
 
@@ -496,7 +778,7 @@ CO_END
 3) 一个对象的实例。
 4) 或从一个循环程序输出的`YIELD'。
 
-当在数组上迭代时，迭代器变量是由数组本身给出的值。当迭代结构时，迭代器变量从结构中获得数值；要迭代结构的键，请使用[`variable_struct_get_names()`](/tool/manual.html?path=GameMaker_Language/GML_Reference/Variable_Functions/variable_struct_get_names.htm)。
+当在数组上迭代时，迭代器变量是由数组本身给出的值。当迭代结构时，迭代器变量从结构中获得数值；要迭代结构的键，请使用[`variable_struct_get_names()`](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Variable_Functions/variable_struct_get_names.htm)。
 
 当迭代对象的实例时，迭代器变量被赋予实例引用（实例的结构表示，例如，在实例的范围内调用`self'得到的）。**请注意**，"FOREACH "循环的行为与GameMaker的本地 "with() "循环不同："FOREACH "循环中的代码范围不会改变。
 
@@ -504,11 +786,11 @@ CO_END
 
 **请注意**不要修改你正在迭代的数组或结构。当`FOREACH...THEN`循环开始时，迭代的总数被计算出来，如果数组或结构的大小发生变化，则可能导致崩溃和其他错误。
 
-
+&nbsp;
 
 #### `BREAK`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     healthRemaining = oPlayer.hp;
     FOREACH heart IN global.heartInstances THEN
@@ -522,11 +804,11 @@ CO_END
 
 **请注意**，标准的GML `break` 命令不会在coroutine循环中发挥作用。
 
-
+&nbsp;
 
 #### `CONTINUE`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     FOREACH enemy IN objEnemy THEN
         IF point_distance(oPlayer.x, oPlayer.y, enemy.x, enemy.y) > 100 THEN
@@ -541,15 +823,15 @@ CO_END
 
 **请注意**，标准的GML`continue`命令在coroutine循环中不起作用。
 
+&nbsp;
 
-
-
+&nbsp;
 
 ### 分支
 
 #### `IF <condition> THEN <function> END_IF` (and `ELSE` and `ELSE_IF`)
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     healthRemaining = oPlayer.hp;
     
@@ -570,13 +852,13 @@ CO_END
 
 **请注意**，`ELSE IF`是不正确的语法，会导致编译错误，请确保使用`ELSE_IF`。
 
-
+&nbsp;
 
 ### 其他
 
 #### `DELAY <expression> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     WHILE instance_exists(oRainbow) THEN
         oRainbow.image_blend = c_red;
@@ -598,11 +880,11 @@ CO_END
 
 **请注意**，当一个程序在等待`DELAY`命令时，`.GetPaused()`方法将**不会**返回"true"。
 
-
+&nbsp;
 
 #### `AWAIT <condition> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     fireball = instance_create_depth(oPlayer.x, oPlayer.y, 0, oFireball);
     fireball.hspeed = -5;
@@ -620,11 +902,11 @@ CO_END
 
 **请注意**，当一个coroutine在等待`AWAIT`命令时，`.GetPaused()`方法将**不会**返回`true`。
 
-
+&nbsp;
 
 #### `AWAIT_FIRST <coroutine> ... END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     AWAIT_FIRST
         CO_BEGIN
@@ -650,11 +932,11 @@ CO_END
 
 **请注意**当一个协程在`AWAIT_FIRST`命令下等待时，`.GetPaused()`方法**不会**返回`true`。
 
-
+&nbsp;
 
 #### `AWAIT_ALL <coroutine> ... END`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     AWAIT_ALL
         CO_BEGIN
@@ -679,11 +961,11 @@ CO_END
 
 **请注意**，当一个协程在`AWAIT_ALL`命令下等待时，`.GetPaused()`方法将不会**返回`true'。
 
-
+&nbsp;
 
 #### `AWAIT_BROADCAST <name> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     //Rotate the door 30 degrees so it's ajar
     WHILE image_angle < 30 THEN
@@ -716,15 +998,15 @@ if (keyboard_check(vk_right))
 
 `AWAIT_BROADCAST`默认情况下，只响应本地Coroutines广播。要收听来自精灵和序列的GameMaker广播，请使用`AWAIT_ASYNC_BROADCAST`。
 
+&nbsp;
 
-
-
+&nbsp;
 
 ### 异步事件
 
 #### `AWAIT_ASYNC_* <function> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("Starting leaderboard pull");
     handle = steam_download_scores("Game Scores", 1, 10);
@@ -779,11 +1061,11 @@ CO_END
 
 这些是GameMaker中最常见的异步事件。如果你想添加更多的异步事件，那么请[让我知道](https://github.com/JujuAdams/Coroutines/issues)，它们将被纳入正式发布。
 
-
+&nbsp;
 
 #### `ASYNC_COMPLETE`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     handle = get_string_async("Please enter your name", "Juju Adams");
     result = "";    
@@ -802,11 +1084,11 @@ CO_END
 
 **请注意**，`ASYNC_COMPLETE`不应该在`AWAIT_ASYNC_*`代码块之外调用，否则你会看到不可预测的行为。
 
-
+&nbsp;
 
 #### `AWAIT_ASYNC_* <function> ASYNC_TIMEOUT <duration> THEN`
 
-```gml
+```cpp
 coroutineRootStruct = CO_BEGIN
     show_debug_message("HTTP GET started");
     handle = http_get("https://www.jujuadams.com/");
